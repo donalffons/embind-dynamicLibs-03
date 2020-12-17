@@ -57,34 +57,7 @@ private:
 Standard_MMgrFactory::Standard_MMgrFactory()
 : myFMMgr (NULL)
 {
-  char* aVar;
-  aVar = getenv ("MMGT_OPT");
-  Standard_Integer anAllocId   = (aVar ?  atoi (aVar): OCCT_MMGT_OPT_DEFAULT);
-
-  aVar = getenv ("MMGT_CLEAR");
-  Standard_Boolean toClear     = (aVar ? (atoi (aVar) != 0) : Standard_True);
-
-  switch (anAllocId)
-  {
-    case 1:  // OCCT optimized memory allocator
-    {
-      aVar = getenv ("MMGT_MMAP");
-      Standard_Boolean bMMap       = (aVar ? (atoi (aVar) != 0) : Standard_True);
-      aVar = getenv ("MMGT_CELLSIZE");
-      Standard_Integer aCellSize   = (aVar ?  atoi (aVar) : 200);
-      aVar = getenv ("MMGT_NBPAGES");
-      Standard_Integer aNbPages    = (aVar ?  atoi (aVar) : 1000);
-      aVar = getenv ("MMGT_THRESHOLD");
-      Standard_Integer aThreshold  = (aVar ?  atoi (aVar) : 40000);
-      myFMMgr = nullptr;
-      break;
-    }
-    case 2:  // TBB memory allocator
-      break;
-    case 0:
-    default: // system default memory allocator
-      myFMMgr = new Standard_MMgrRaw (toClear);
-  }
+  myFMMgr = new Standard_MMgrRaw (true);
 }
 
 //=======================================================================
