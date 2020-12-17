@@ -61,9 +61,6 @@ public:
   //! Returns type descriptor of Standard_Transient class
   Standard_EXPORT static const opencascade::handle<Standard_Type>& get_type_descriptor ();
 
-  //! Returns a type descriptor about this object.
-  Standard_EXPORT virtual const opencascade::handle<Standard_Type>& DynamicType() const;
-
 public:
   //!@name Reference counting, for use by handle<>
 

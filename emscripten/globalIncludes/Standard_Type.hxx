@@ -99,7 +99,6 @@ public: \
   typedef Base base_type; \
   static const char* get_type_name () { return #Class; OCCT_CHECK_BASE_CLASS(Class,Base) } \
   static const Handle(Standard_Type)& get_type_descriptor () { return Standard_Type::Instance<Class>(); } \
-  virtual const Handle(Standard_Type)& DynamicType() const Standard_OVERRIDE { return get_type_descriptor (); }
 
 //! Helper macro to be included in definition of the classes inheriting
 //! Standard_Transient to enable use of OCCT RTTI.
@@ -110,12 +109,10 @@ public: \
   typedef Base base_type; \
   static const char* get_type_name () { return #Class; OCCT_CHECK_BASE_CLASS(Class,Base) } \
   Standard_EXPORT static const Handle(Standard_Type)& get_type_descriptor (); \
-  Standard_EXPORT virtual const Handle(Standard_Type)& DynamicType() const Standard_OVERRIDE;
 
 //! Defines implementation of type descriptor and DynamicType() function
 #define IMPLEMENT_STANDARD_RTTIEXT(Class,Base) \
   const Handle(Standard_Type)& Class::get_type_descriptor () { return Standard_Type::Instance<Class>(); } \
-  const Handle(Standard_Type)& Class::DynamicType() const { return STANDARD_TYPE(Class); }
 
 // forward declaration of type_instance class
 namespace opencascade {
