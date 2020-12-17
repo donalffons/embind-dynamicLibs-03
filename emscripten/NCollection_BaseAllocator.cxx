@@ -37,8 +37,3 @@ const Handle(NCollection_BaseAllocator)&
     new NCollection_BaseAllocator;
   return pAllocator;
 }
-
-namespace
-{
-  static Handle(NCollection_BaseAllocator) theAllocInit = NCollection_BaseAllocator::CommonBaseAllocator();
-}
