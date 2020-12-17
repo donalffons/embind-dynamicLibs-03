@@ -34,15 +34,3 @@ const Handle(Standard_Type)& Standard_Transient::DynamicType() const
 {
   return get_type_descriptor();
 }
-
-// Increment reference counter
-void Standard_Transient::IncrementRefCounter() const
-{
-  Standard_Atomic_Increment (&myRefCount_);
-}
-
-// Decrement reference counter
-Standard_Integer Standard_Transient::DecrementRefCounter() const
-{
-  return Standard_Atomic_Decrement(&myRefCount_);
-}

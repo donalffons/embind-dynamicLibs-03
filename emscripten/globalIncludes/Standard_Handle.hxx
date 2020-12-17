@@ -383,16 +383,11 @@ namespace opencascade {
     //! Increment reference counter of referred object 
     void BeginScope()
     {
-      if (entity != 0)
-        entity->IncrementRefCounter();
     }
 
     //! Decrement reference counter and if 0, destroy referred object
     void EndScope()
     {
-      if (entity != 0 && entity->DecrementRefCounter() == 0)
-        entity->Delete();
-      entity = 0;
     }
 
     template <class T2> friend class handle;

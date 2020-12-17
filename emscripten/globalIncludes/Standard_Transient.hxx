@@ -63,19 +63,12 @@ public:
 
   //! Returns a type descriptor about this object.
   Standard_EXPORT virtual const opencascade::handle<Standard_Type>& DynamicType() const;
-  
+
 public:
   //!@name Reference counting, for use by handle<>
 
   //! Get the reference counter of this object
   Standard_Integer GetRefCount() const { return myRefCount_; }
-
-  //! Increments the reference counter of this object
-  Standard_EXPORT void IncrementRefCounter() const;
-
-  //! Decrements the reference counter of this object;
-  //! returns the decremented value
-  Standard_EXPORT Standard_Integer DecrementRefCounter() const;
 
 private:
 
