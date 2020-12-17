@@ -9,9 +9,6 @@
 class NCollection_BaseAllocator : public Standard_Transient
 {
  public:
-  // ---------- PUBLIC METHODS ------------
-  Standard_EXPORT virtual void* Allocate (const size_t size);
-  
   Standard_EXPORT static const Handle(NCollection_BaseAllocator)&
     CommonBaseAllocator(void);
 

@@ -16,16 +16,6 @@
 #include <NCollection_BaseAllocator.hxx>
 
 //=======================================================================
-//function : Allocate
-//purpose  : Standard allocation
-//=======================================================================
-
-void* NCollection_BaseAllocator::Allocate(const size_t size)
-{ 
-  return Standard::Allocate(size);
-}
-
-//=======================================================================
 //function : CommonBaseAllocator
 //purpose  : Creates the only one BaseAllocator
 //=======================================================================
