@@ -18,7 +18,6 @@ emcc \
   ./Standard.cxx \
   ./Standard_Transient.cxx \
   ./Standard_MMgrRaw.cxx \
-  ./Standard_MMgrRoot.cxx \
   ./NCollection_BaseAllocator.cxx \
   -o ./build/library1.wasm
 

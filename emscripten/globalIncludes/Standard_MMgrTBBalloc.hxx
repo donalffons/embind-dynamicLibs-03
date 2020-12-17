@@ -16,8 +16,6 @@
 #ifndef _Standard_MMgrTBBalloc_HeaderFile
 #define _Standard_MMgrTBBalloc_HeaderFile
 
-#include <Standard_MMgrRoot.hxx>
-
 //!
 //! Implementation of OCC memory manager which uses Intel TBB
 //! scalable allocator.
@@ -25,7 +23,7 @@
 //! On configurations where TBB is not available standard RTL functions 
 //! malloc() / free() are used.
 
-class Standard_MMgrTBBalloc : public Standard_MMgrRoot
+class Standard_MMgrTBBalloc
 {
  public:
   //! Constructor; if aClear is True, the memory will be nullified

@@ -53,3 +53,8 @@ void Standard_MMgrRaw::Free(Standard_Address theStorage)
 {
   free(theStorage);
 }
+
+Standard_Integer Standard_MMgrRaw::Purge(Standard_Boolean)
+{
+  return 0;
+}

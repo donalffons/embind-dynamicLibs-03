@@ -54,7 +54,7 @@
 class Standard_MMgrFactory
 {
 public:
-  static Standard_MMgrRoot* GetMMgr();
+  static Standard_MMgrRaw* GetMMgr();
   ~Standard_MMgrFactory();
 
 private:
@@ -63,7 +63,7 @@ private:
   Standard_MMgrFactory& operator= (const Standard_MMgrFactory&);
 
 private:
-  Standard_MMgrRoot* myFMMgr;
+  Standard_MMgrRaw* myFMMgr;
 };
 
 //=======================================================================
@@ -163,7 +163,6 @@ Standard_MMgrFactory::Standard_MMgrFactory()
       break;
     }
     case 2:  // TBB memory allocator
-      myFMMgr = new Standard_MMgrTBBalloc (toClear);
       break;
     case 0:
     default: // system default memory allocator
@@ -223,7 +222,7 @@ Standard_MMgrFactory::~Standard_MMgrFactory()
 // be counting calls to Allocate() and Free()...
 //
 //=======================================================================
-Standard_MMgrRoot* Standard_MMgrFactory::GetMMgr()
+Standard_MMgrRaw* Standard_MMgrFactory::GetMMgr()
 {
   static Standard_MMgrFactory aFactory;
   return aFactory.myFMMgr;

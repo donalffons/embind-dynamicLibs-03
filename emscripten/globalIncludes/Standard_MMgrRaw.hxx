@@ -16,7 +16,7 @@
 #ifndef _Standard_MMgrRaw_HeaderFile
 #define _Standard_MMgrRaw_HeaderFile
 
-#include <Standard_MMgrRoot.hxx>
+#include <Standard_TypeDef.hxx>
 
 /**
 * Implementation of raw OCC memory manager which uses standard C
@@ -24,7 +24,7 @@
 * without any optimization
 */
 
-class Standard_MMgrRaw : public Standard_MMgrRoot
+class Standard_MMgrRaw
 {
  public:
   //! Constructor; if aClear is True, the memory will be nullified
@@ -36,6 +36,8 @@ class Standard_MMgrRaw : public Standard_MMgrRoot
   
   //! Free allocated memory. The pointer is nullified.
   Standard_EXPORT virtual void Free (Standard_Address thePtr);
+
+  Standard_EXPORT virtual Standard_Integer Purge(Standard_Boolean isDestroyed=Standard_False);
 
  protected:
   Standard_Boolean myClear; //! Option to nullify allocated memory
