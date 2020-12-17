@@ -20,7 +20,6 @@ emcc \
   ./Standard_Failure.cxx \
   ./Standard_MMgrRaw.cxx \
   ./Standard_MMgrRoot.cxx \
-  ./Standard_OutOfMemory.cxx \
   ./NCollection_BaseAllocator.cxx \
   -o ./build/library1.wasm
 

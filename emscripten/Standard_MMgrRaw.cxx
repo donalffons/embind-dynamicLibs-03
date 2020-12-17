@@ -14,7 +14,6 @@
 // commercial license or contractual agreement.
 
 #include <Standard_MMgrRaw.hxx>
-#include <Standard_OutOfMemory.hxx>
 #include <stdlib.h>
 
 //=======================================================================
@@ -41,7 +40,7 @@ Standard_Address Standard_MMgrRaw::Allocate(const Standard_Size aSize)
   Standard_Address aPtr = ( myClear ? calloc(aRoundSize, sizeof(char)) :
                                       malloc(aRoundSize) );
   if ( ! aPtr )
-    throw Standard_OutOfMemory("Standard_MMgrRaw::Allocate(): malloc failed");
+    return nullptr;
   return aPtr;
 }
 
@@ -68,7 +67,7 @@ Standard_Address Standard_MMgrRaw::Reallocate(Standard_Address theStorage,
   const Standard_Size aRoundSize = (theSize + 3) & ~0x3;
   Standard_Address newStorage = (Standard_Address)realloc(theStorage, aRoundSize);
   if ( ! newStorage )
-    throw Standard_OutOfMemory("Standard_MMgrRaw::Reallocate(): realloc failed");
+    return nullptr;
   // Note that it is not possible to ensure that additional memory
   // allocated by realloc will be cleared (so as to satisfy myClear mode);
   // in order to do that we would need using memset...
