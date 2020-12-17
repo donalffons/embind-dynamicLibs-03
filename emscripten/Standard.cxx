@@ -106,24 +106,3 @@ Standard_Integer Standard::Purge()
 {
   return Standard_MMgrFactory::GetMMgr()->Purge();
 }
-
-//=======================================================================
-//function : AllocateAligned
-//purpose  :
-//=======================================================================
-
-Standard_Address Standard::AllocateAligned (const Standard_Size theSize,
-                                            const Standard_Size theAlign)
-{
-  return _mm_malloc (theSize, theAlign);
-}
-
-//=======================================================================
-//function : FreeAligned
-//purpose  :
-//=======================================================================
-
-void Standard::FreeAligned (Standard_Address thePtrAligned)
-{
-  _mm_free (thePtrAligned);
-}

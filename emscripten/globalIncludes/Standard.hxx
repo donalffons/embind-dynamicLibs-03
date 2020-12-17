@@ -53,26 +53,6 @@ public:
     thePtr = 0;
   }
   
-  //! Allocates aligned memory blocks.
-  //! Should be used with CPU instructions which require specific alignment.
-  //! For example: SSE requires 16 bytes, AVX requires 32 bytes.
-  //! @param theSize  bytes to allocate
-  //! @param theAlign alignment in bytes
-  Standard_EXPORT static Standard_Address AllocateAligned (const Standard_Size theSize, const Standard_Size theAlign);
-  
-  //! Deallocates memory blocks
-  //! @param thePtrAligned the memory block previously allocated with AllocateAligned()
-  Standard_EXPORT static void FreeAligned (const Standard_Address thePtrAligned);
-  
-  //! Template version of function FreeAligned(), nullifies the argument pointer
-  //! @param thePtrAligned the memory block previously allocated with AllocateAligned()
-  template <typename T>
-  static inline void FreeAligned (T*& thePtrAligned)
-  {
-    FreeAligned ((void* )thePtrAligned);
-    thePtrAligned = 0;
-  }
-  
   //! Deallocates the storage retained on the free list
   //! and clears the list.
   //! Returns non-zero if some memory has been actually freed.
