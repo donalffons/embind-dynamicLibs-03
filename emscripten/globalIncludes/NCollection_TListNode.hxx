@@ -40,7 +40,6 @@ template <class TheItemType> class NCollection_TListNode
                        Handle(NCollection_BaseAllocator)& theAl)
   {
     ((NCollection_TListNode *) theNode)->myValue.~TheItemType();
-    theAl->Free(theNode);
   }
 
   

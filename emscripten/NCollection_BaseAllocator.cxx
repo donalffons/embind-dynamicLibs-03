@@ -28,16 +28,6 @@ void* NCollection_BaseAllocator::Allocate(const size_t size)
 }
 
 //=======================================================================
-//function : Free
-//purpose  : Standard deallocation
-//=======================================================================
-
-void  NCollection_BaseAllocator::Free(void *anAddress)
-{ 
-  if (anAddress) Standard::Free(anAddress); 
-}
-
-//=======================================================================
 //function : CommonBaseAllocator
 //purpose  : Creates the only one BaseAllocator
 //=======================================================================

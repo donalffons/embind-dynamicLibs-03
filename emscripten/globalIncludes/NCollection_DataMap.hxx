@@ -74,7 +74,6 @@ public:
                          Handle(NCollection_BaseAllocator)& theAl)
     {
       ((DataMapNode *) theNode)->~DataMapNode();
-      theAl->Free(theNode);
     }
 
   private:
@@ -234,7 +233,6 @@ public:
       }
       p = (DataMapNode *) p->Next();
     }
-    data[k] = new (this->myAllocator) DataMapNode (theKey, theItem, data[k]);
     Increment();
     return Standard_True;
   }
@@ -256,7 +254,6 @@ public:
       }
       p = (DataMapNode*)p->Next();
     }
-    data[k] = new (this->myAllocator) DataMapNode (theKey, theItem, data[k]);
     Increment();
     return &data[k]->ChangeValue();
   }
@@ -287,7 +284,6 @@ public:
         else
           data[k] = (DataMapNode*) p->Next();
         p->~DataMapNode();
-        this->myAllocator->Free(p);
         return Standard_True;
       }
       q = p;

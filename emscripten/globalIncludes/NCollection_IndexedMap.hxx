@@ -65,7 +65,6 @@ protected:
                          Handle(NCollection_BaseAllocator)& theAl)
     {
       ((IndexedMapNode *) theNode)->~IndexedMapNode();
-      theAl->Free(theNode);
     }
 
   private:

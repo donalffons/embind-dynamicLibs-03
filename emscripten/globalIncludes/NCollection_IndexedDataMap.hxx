@@ -77,7 +77,6 @@ private:
                          Handle(NCollection_BaseAllocator)& theAl)
     {
       ((IndexedDataMapNode *) theNode)->~IndexedDataMapNode();
-      theAl->Free(theNode);
     }
   private:
     TheKeyType       myKey1;

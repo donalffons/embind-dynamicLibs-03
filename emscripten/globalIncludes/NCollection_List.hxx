@@ -125,8 +125,6 @@ public:
   //! Append one item at the end
   TheItemType& Append (const TheItemType& theItem)
   { 
-    ListNode * pNew = new (this->myAllocator) ListNode(theItem);
-    PAppend(pNew);
     return ((ListNode *) PLast())->ChangeValue();
   }
 
@@ -134,8 +132,6 @@ public:
   //!   pointing at the appended item
   void Append (const TheItemType& theItem, Iterator& theIter)
   { 
-    ListNode * pNew = new (this->myAllocator) ListNode(theItem);
-    PAppend(pNew, theIter);
   }
 
   //! Append another list at the end.
@@ -161,8 +157,6 @@ public:
   //! Prepend one item at the beginning
   TheItemType& Prepend (const TheItemType& theItem)
   { 
-    ListNode * pNew = new (this->myAllocator) ListNode(theItem);
-    PPrepend(pNew);
     return ((ListNode *) PFirst())->ChangeValue();
   }
 
@@ -216,9 +210,6 @@ public:
   TheItemType& InsertBefore (const TheItemType& theItem,
                              Iterator& theIter) 
   { 
-    ListNode * pNew = new (this->myAllocator) ListNode(theItem);
-    PInsertBefore (pNew, theIter);
-    return pNew -> ChangeValue();
   }
 
   //! InsertBefore
@@ -246,9 +237,6 @@ public:
   TheItemType& InsertAfter (const TheItemType& theItem,
                             Iterator& theIter) 
   {
-    ListNode * pNew = new (this->myAllocator) ListNode(theItem);
-    PInsertAfter (pNew, theIter);
-    return pNew -> ChangeValue();
   }
 
   //! InsertAfter
@@ -305,9 +293,6 @@ public:
   //! append the list headed by the given ListNode
   void appendList(const NCollection_ListNode * pCur) {
     while (pCur) {
-      NCollection_ListNode * pNew =
-        new (this->myAllocator) ListNode(((const ListNode *)(pCur))->Value());
-      PAppend(pNew);
       pCur = pCur->Next();
     }
   }
@@ -315,9 +300,6 @@ public:
   //! insert the list headed by the given ListNode before the given iterator
   void prependList(const NCollection_ListNode * pCur, Iterator& theIter) {
     while (pCur) {
-      NCollection_ListNode * pNew =
-        new (this->myAllocator) ListNode (((const ListNode *)(pCur))->Value());
-      PInsertBefore(pNew, theIter);
       pCur = pCur->Next();
     }
   }

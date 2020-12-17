@@ -207,7 +207,6 @@ public:
         return Standard_False;
       p = (MapNode *) p->Next();
     }
-    data[k] = new (this->myAllocator) MapNode(K,data[k]);
     Increment();
     return Standard_True;
   }
@@ -267,7 +266,6 @@ public:
         else
           data[k] = (MapNode*) p->Next();
         p->~MapNode();
-        this->myAllocator->Free(p);
         return Standard_True;
       }
       q = p;
