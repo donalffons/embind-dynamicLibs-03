@@ -16,7 +16,6 @@
 
 
 #include <Standard.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_MMgrRaw.hxx>
 #include <Standard_MMgrTBBalloc.hxx>
 #include <Standard_Assert.hxx>
@@ -160,7 +159,7 @@ Standard_MMgrFactory::Standard_MMgrFactory()
       Standard_Integer aNbPages    = (aVar ?  atoi (aVar) : 1000);
       aVar = getenv ("MMGT_THRESHOLD");
       Standard_Integer aThreshold  = (aVar ?  atoi (aVar) : 40000);
-      myFMMgr = new Standard_MMgrOpt (toClear, bMMap, aCellSize, aNbPages, aThreshold);
+      myFMMgr = nullptr;
       break;
     }
     case 2:  // TBB memory allocator

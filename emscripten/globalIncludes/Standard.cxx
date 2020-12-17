@@ -16,7 +16,6 @@
 
 
 #include <Standard.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_MMgrRaw.hxx>
 #include <Standard_MMgrTBBalloc.hxx>
 #include <Standard_Assert.hxx>
