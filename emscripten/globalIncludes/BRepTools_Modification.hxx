@@ -124,10 +124,6 @@ public:
   Standard_EXPORT virtual GeomAbs_Shape Continuity (const TopoDS_Edge& E, const TopoDS_Face& F1, const TopoDS_Face& F2, const TopoDS_Edge& NewE, const TopoDS_Face& NewF1, const TopoDS_Face& NewF2) = 0;
 
 
-
-
-  DEFINE_STANDARD_RTTIEXT(BRepTools_Modification,Standard_Transient)
-
 protected:
 
 

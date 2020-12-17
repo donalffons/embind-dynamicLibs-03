@@ -40,9 +40,6 @@ public:
 
 
 
-
-  DEFINE_STANDARD_RTTIEXT(TCollection_MapNode,Standard_Transient)
-
 protected:
 
 

@@ -28,7 +28,6 @@ class Message_Messenger;
 //! Alert attribute object storing TopoDS shape in its field
 class TopoDS_AlertAttribute : public Message_AttributeStream
 {
-  DEFINE_STANDARD_RTTIEXT(TopoDS_AlertAttribute, Message_AttributeStream)
 public:
   //! Constructor with shape argument
   Standard_EXPORT TopoDS_AlertAttribute (const TopoDS_Shape& theShape,

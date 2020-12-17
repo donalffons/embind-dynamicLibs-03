@@ -47,10 +47,6 @@ public:
   Standard_EXPORT virtual Handle(TopoDS_TShape) EmptyCopy() const Standard_OVERRIDE;
 
 
-
-
-  DEFINE_STANDARD_RTTIEXT(TopoDS_TFace,TopoDS_TShape)
-
 protected:
 
 

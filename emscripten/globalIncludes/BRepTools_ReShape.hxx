@@ -152,8 +152,6 @@ public:
   //! Returns the history of the substituted shapes.
   Standard_EXPORT Handle(BRepTools_History) History() const;
 
-  DEFINE_STANDARD_RTTIEXT(BRepTools_ReShape,Standard_Transient)
-
 protected:
   //! The kinds of the replacements.
   enum TReplacementKind

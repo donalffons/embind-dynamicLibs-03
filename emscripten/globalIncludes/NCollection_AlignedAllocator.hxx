@@ -44,10 +44,6 @@ protected:
 
   size_t myAlignment; //!< alignment in bytes
 
-public:
-
-  DEFINE_STANDARD_RTTIEXT(NCollection_AlignedAllocator,NCollection_BaseAllocator)
-
 };
 
 // Definition of HANDLE object using Standard_DefineHandle.hxx

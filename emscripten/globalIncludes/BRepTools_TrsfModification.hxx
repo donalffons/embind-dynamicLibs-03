@@ -112,8 +112,6 @@ public:
 
 
 
-  DEFINE_STANDARD_RTTIEXT(BRepTools_TrsfModification,BRepTools_Modification)
-
 protected:
 
 

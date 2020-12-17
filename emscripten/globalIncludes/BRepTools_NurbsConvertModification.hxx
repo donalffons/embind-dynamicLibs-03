@@ -106,8 +106,6 @@ public:
 
 
 
-  DEFINE_STANDARD_RTTIEXT(BRepTools_NurbsConvertModification,BRepTools_Modification)
-
 protected:
 
 

@@ -96,15 +96,6 @@ public: \
   typedef Base base_type; \
   static const char* get_type_name () { return #Class; OCCT_CHECK_BASE_CLASS(Class,Base) } \
 
-//! Helper macro to be included in definition of the classes inheriting
-//! Standard_Transient to enable use of OCCT RTTI.
-//!
-//! Out-of-line version, requires IMPLEMENT_STANDARD_RTTIEXT.
-#define DEFINE_STANDARD_RTTIEXT(Class,Base) \
-public: \
-  typedef Base base_type; \
-  static const char* get_type_name () { return #Class; OCCT_CHECK_BASE_CLASS(Class,Base) } \
-
 // forward declaration of type_instance class
 namespace opencascade {
   template <typename T>
@@ -186,9 +177,6 @@ public:
 
   //! Destructor removes the type from the registry
   Standard_EXPORT ~Standard_Type ();
-
-  // Define own RTTI
-  DEFINE_STANDARD_RTTIEXT(Standard_Type,Standard_Transient)
 
 private:
 

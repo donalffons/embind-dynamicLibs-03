@@ -19,10 +19,6 @@ class NCollection_BaseAllocator : public Standard_Transient
  private:
   //! Copy constructor - prohibited
   NCollection_BaseAllocator(const NCollection_BaseAllocator&);
-
- public:
-  // ---------- CasCade RunTime Type Information
-  DEFINE_STANDARD_RTTIEXT(NCollection_BaseAllocator,Standard_Transient)
 };
 
 DEFINE_STANDARD_HANDLE(NCollection_BaseAllocator,Standard_Transient)

@@ -46,8 +46,6 @@ public:
 
 
 
-  DEFINE_STANDARD_RTTIEXT(TopLoc_SListNodeOfItemLocation,Standard_Transient)
-
 protected:
 
 

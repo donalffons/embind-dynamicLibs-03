@@ -38,9 +38,6 @@ public:
   //! Returns false.
   virtual Standard_EXPORT Standard_Boolean Merge (const Handle(Message_Alert)& theTarget) Standard_OVERRIDE;
 
-  // OCCT RTTI
-  DEFINE_STANDARD_RTTIEXT(TopoDS_AlertWithShape, Message_Alert)
-
 private:
   TopoDS_Shape myShape;
 };

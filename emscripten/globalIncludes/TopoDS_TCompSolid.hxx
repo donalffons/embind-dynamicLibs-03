@@ -45,10 +45,6 @@ public:
   Standard_EXPORT Handle(TopoDS_TShape) EmptyCopy() const Standard_OVERRIDE;
 
 
-
-
-  DEFINE_STANDARD_RTTIEXT(TopoDS_TCompSolid,TopoDS_TShape)
-
 protected:
 
 

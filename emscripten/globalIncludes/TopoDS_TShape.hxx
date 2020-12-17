@@ -132,9 +132,6 @@ public:
 friend class TopoDS_Iterator;
 friend class TopoDS_Builder;
 
-
-  DEFINE_STANDARD_RTTIEXT(TopoDS_TShape,Standard_Transient)
-
 protected:
 
   //! Constructs an empty TShape.

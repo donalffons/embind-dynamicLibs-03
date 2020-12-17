@@ -57,10 +57,6 @@ public:
     TopoDS_Shape& ChangeShape();
 
 
-
-
-  DEFINE_STANDARD_RTTIEXT(TopoDS_HShape,Standard_Transient)
-
 protected:
 
 

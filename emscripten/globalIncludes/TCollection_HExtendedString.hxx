@@ -205,11 +205,6 @@ public:
   
   Standard_EXPORT Standard_Boolean IsSameState (const Handle(TCollection_HExtendedString)& other) const;
 
-
-
-
-  DEFINE_STANDARD_RTTIEXT(TCollection_HExtendedString,Standard_Transient)
-
 protected:
 
 

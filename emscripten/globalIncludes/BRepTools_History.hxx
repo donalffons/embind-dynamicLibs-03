@@ -237,11 +237,6 @@ public: //! A method to dump a history
     theS << " - " << myShapeToGenerated.Extent() << " Generated shapes.\n";
   }
 
-public:
-
-  //! Define the OCCT RTTI for the type.
-  DEFINE_STANDARD_RTTIEXT(BRepTools_History, Standard_Transient)
-
 private:
   //! Prepares the shapes generated from the first shape to set the second one
   //! as generated one from the first one by the addition or the replacement.

@@ -39,10 +39,6 @@ public:
   Standard_EXPORT TopAbs_ShapeEnum ShapeType() const Standard_OVERRIDE;
 
 
-
-
-  DEFINE_STANDARD_RTTIEXT(TopoDS_TEdge,TopoDS_TShape)
-
 protected:
 
   

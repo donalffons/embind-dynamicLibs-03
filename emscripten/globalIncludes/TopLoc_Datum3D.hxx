@@ -59,8 +59,6 @@ public:
   //! Writes the contents of this Datum3D to the stream S.
   Standard_EXPORT void ShallowDump (Standard_OStream& S) const;
 
-  DEFINE_STANDARD_RTTIEXT(TopLoc_Datum3D,Standard_Transient)
-
 private:
 
   gp_Trsf myTrsf;

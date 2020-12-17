@@ -42,9 +42,6 @@ public:
 
 
 
-
-  DEFINE_STANDARD_RTTIEXT(TCollection_SeqNode,Standard_Transient)
-
 protected:
 
 

@@ -114,10 +114,6 @@ class NCollection_IncAllocator : public NCollection_BaseAllocator
   IBlock        * myFirstBlock;
   size_t        mySize;
   size_t        myMemSize;
-
- public:
-// Declaration of CASCADE RTTI
-  DEFINE_STANDARD_RTTIEXT(NCollection_IncAllocator,NCollection_BaseAllocator)
 };
 
 // Definition of HANDLE object using Standard_DefineHandle.hxx
