@@ -16,7 +16,6 @@
 // Modif JCV 10/12/90 ajout de la methode Translationpart
 
 
-#include <Standard_OutOfRange.hxx>
 #include <gp_Trsf2d.hxx>
 #include <gp_Vec.hxx>
 #include <gp_Pnt.hxx>
@@ -71,8 +70,6 @@ inline const gp_Mat& gp_Trsf::HVectorialPart () const
 inline Standard_Real gp_Trsf::Value (const Standard_Integer Row, 
 				     const Standard_Integer Col) const 
 {
-  Standard_OutOfRange_Raise_if
-    (Row < 1 || Row > 3 || Col < 1 || Col > 4, " ");
   if (Col < 4) return scale * matrix.Value (Row, Col);
   else         return loc.Coord (Row);
 }

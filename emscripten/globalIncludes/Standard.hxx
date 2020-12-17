@@ -25,7 +25,6 @@
 class Standard_ErrorHandler;
 class Standard_Persistent;
 class Standard_Transient;
-class Standard_Failure;
 
 //! The package Standard provides global memory allocator and other basic
 //! services used by other OCCT components.

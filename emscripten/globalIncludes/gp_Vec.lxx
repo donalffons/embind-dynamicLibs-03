@@ -19,8 +19,6 @@
 #include <gp_Dir.hxx>
 #include <gp_Pnt.hxx>
 #include <gp_Trsf.hxx>
-#include <gp_VectorWithNullMagnitude.hxx>
-#include <Standard_ConstructionError.hxx>
 
 inline gp_Vec::gp_Vec() { }
 
@@ -121,19 +119,12 @@ inline Standard_Real gp_Vec::Angle (const gp_Vec& Other) const
   //    En 3d les valeurs angulaires sont toujours positives et comprises entre
   //    0 et Pi.
   
-  gp_VectorWithNullMagnitude_Raise_if
-    (coord.Modulus()       <= gp::Resolution() ||
-     Other.coord.Modulus() <= gp::Resolution(), " ");
   return (gp_Dir(coord)).Angle(Other);
 }
 
 inline Standard_Real gp_Vec::AngleWithRef (const gp_Vec& Other,
 					   const gp_Vec& Vref) const
 {
-  gp_VectorWithNullMagnitude_Raise_if
-    (coord.Modulus()       <= gp::Resolution() ||
-     Vref.coord.Modulus () <= gp::Resolution() ||
-     Other.coord.Modulus() <= gp::Resolution(), " ");
   return (gp_Dir(coord)).AngleWithRef(Other,Vref);
 } 
 
@@ -223,16 +214,12 @@ inline Standard_Real gp_Vec::DotCross (const gp_Vec& V1,
 inline void gp_Vec::Normalize()
 { 
   Standard_Real D = coord.Modulus();
-  Standard_ConstructionError_Raise_if (D <= gp::Resolution(),
-                                       "gp_Vec::Normalize() - vector has zero norm");
   coord.Divide (D);
 }
 
 inline gp_Vec gp_Vec::Normalized() const
 { 
   Standard_Real D = coord.Modulus();
-  Standard_ConstructionError_Raise_if (D <= gp::Resolution(),
-                                       "gp_Vec::Normalized() - vector has zero norm");
   gp_Vec V = *this;
   V.coord.Divide (D);
   return V; 

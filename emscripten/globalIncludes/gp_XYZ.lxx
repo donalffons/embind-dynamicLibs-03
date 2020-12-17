@@ -16,8 +16,6 @@
 
 #include <gp.hxx>
 #include <gp_Mat.hxx>
-#include <Standard_ConstructionError.hxx>
-#include <Standard_OutOfRange.hxx>
 
 inline gp_XYZ::gp_XYZ () : x(0.), y(0.), z(0.) { }
 
@@ -32,7 +30,6 @@ inline void gp_XYZ::SetCoord (const Standard_Real X,
 
 inline void gp_XYZ::SetCoord (const Standard_Integer i,
 			      const Standard_Real X) {
-  Standard_OutOfRange_Raise_if( i < 1 || i > 3,NULL);
   (&x)[i-1] = X;
 }
 
@@ -46,13 +43,11 @@ inline void gp_XYZ::SetZ (const Standard_Real Z)
 { z = Z; }
 
 inline Standard_Real gp_XYZ::Coord (const Standard_Integer i) const {
-  Standard_OutOfRange_Raise_if( i < 1 || i > 3,NULL);
   return (&x)[i-1];
 }
 
 inline Standard_Real& gp_XYZ::ChangeCoord(const Standard_Integer theIndex)
 {
-  Standard_OutOfRange_Raise_if(theIndex < 1 || theIndex > 3,NULL);
   return (&x)[theIndex - 1];
 }
 
@@ -210,16 +205,12 @@ inline gp_XYZ gp_XYZ::Multiplied (const gp_Mat& Matrix) const
 inline void gp_XYZ::Normalize ()
 {
   Standard_Real D = Modulus();
-  Standard_ConstructionError_Raise_if (D <= gp::Resolution(),
-                                       "gp_XYZ::Normalize() - vector has zero norm");
   x = x / D;  y = y / D;  z = z / D;
 }
 
 inline gp_XYZ gp_XYZ::Normalized () const
 {
   Standard_Real D = Modulus();
-  Standard_ConstructionError_Raise_if (D <= gp::Resolution(),
-                                       "gp_XYZ::Normalized() - vector has zero norm");
   return gp_XYZ (x / D, y / D, z / D);
 }
 

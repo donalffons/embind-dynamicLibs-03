@@ -22,7 +22,6 @@
 #include <NCollection_DefaultHasher.hxx>
 
 #include <Standard_TypeMismatch.hxx>
-#include <Standard_NoSuchObject.hxx>
 
 /**
 * Purpose:     The DataMap is a Map to store keys with associated
@@ -102,19 +101,16 @@ public:
     //! Value inquiry
     const TheItemType& Value(void) const
     {  
-      Standard_NoSuchObject_Raise_if(!More(), "NCollection_DataMap::Iterator::Value");  
       return ((DataMapNode *) myNode)->Value();
     }
     //! Value change access
     TheItemType& ChangeValue(void) const
     {  
-      Standard_NoSuchObject_Raise_if(!More(), "NCollection_DataMap::Iterator::ChangeValue");  
       return ((DataMapNode *) myNode)->ChangeValue();
     }
     //! Key
     const TheKeyType& Key (void) const
     { 
-      Standard_NoSuchObject_Raise_if(!More(), "NCollection_DataMap::Iterator::Key");  
       return ((DataMapNode *) myNode)->Key();
     }
   };
@@ -315,7 +311,7 @@ public:
   {
     DataMapNode* p = 0;
     if (!lookup(theKey, p))
-      throw Standard_NoSuchObject("NCollection_DataMap::Find");
+      throw std::runtime_error("NCollection_DataMap::Find");
     return p->Value();
   }
 
@@ -351,7 +347,7 @@ public:
   {
     DataMapNode* p = 0;
     if (!lookup(theKey, p))
-      throw Standard_NoSuchObject("NCollection_DataMap::Find");
+      throw std::runtime_error("NCollection_DataMap::Find");
     return p->ChangeValue();
   }
 

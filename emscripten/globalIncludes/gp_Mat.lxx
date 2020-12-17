@@ -13,8 +13,6 @@
 // commercial license or contractual agreement.
 
 #include <gp.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <Standard_ConstructionError.hxx>
 
 #define Mat00 matrix[0][0]
 #define Mat01 matrix[0][1]
@@ -102,8 +100,6 @@ inline void gp_Mat::SetValue (const Standard_Integer Row,
 			      const Standard_Integer Col, 
 			      const Standard_Real Value)
 {
-  Standard_OutOfRange_Raise_if
-    (Row < 1 || Row > 3 || Col < 1 || Col > 3, " ");
   matrix[Row-1][Col-1] = Value;
 }
 
@@ -118,16 +114,12 @@ inline Standard_Real gp_Mat::Determinant () const
 inline const Standard_Real& gp_Mat::Value (const Standard_Integer Row, 
 					   const Standard_Integer Col) const
 {
-  Standard_OutOfRange_Raise_if
-    (Row < 1 || Row > 3 || Col < 1 || Col > 3, " ");
   return matrix[Row-1][Col-1];
 }
 
 inline Standard_Real& gp_Mat::ChangeValue (const Standard_Integer Row, 
 					   const Standard_Integer Col)
 {
-  Standard_OutOfRange_Raise_if
-    (Row < 1 || Row > 3 || Col < 1 || Col > 3, " ");
   return matrix[Row-1][Col-1];
 }
 
@@ -171,8 +163,6 @@ inline void gp_Mat::Divide (const Standard_Real Scalar)
 {
   Standard_Real val = Scalar;
   if (val < 0) val = - val;
-  Standard_ConstructionError_Raise_if
-      (val <= gp::Resolution(),"gp_Mat : Divide by 0");
   Standard_Real UnSurScalar = 1.0 / Scalar;
   Mat00 *= UnSurScalar;
   Mat01 *= UnSurScalar; 
@@ -189,8 +179,6 @@ inline gp_Mat gp_Mat::Divided (const Standard_Real Scalar) const
 {
   Standard_Real val = Scalar;
   if (val < 0) val = - val;
-  Standard_ConstructionError_Raise_if
-      (val <= gp::Resolution(),"gp_Mat : Divide by 0");
   gp_Mat NewMat;
   Standard_Real UnSurScalar = 1.0 / Scalar;
   Nat00 = Mat00 * UnSurScalar;

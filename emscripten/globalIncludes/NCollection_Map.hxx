@@ -22,8 +22,6 @@
 #include <NCollection_StlIterator.hxx>
 #include <NCollection_DefaultHasher.hxx>
 
-#include <Standard_NoSuchObject.hxx>
-
 /**
  * Purpose:     Single hashed Map. This  Map is used  to store and
  *              retrieve keys in linear time.
@@ -95,14 +93,12 @@ public:
     //! Value inquiry
     const TheKeyType& Value(void) const
     {
-      Standard_NoSuchObject_Raise_if (!More(), "NCollection_Map::Iterator::Value");  
       return ((MapNode *) myNode)->Value();
     }
 
     //! Key
     const TheKeyType& Key (void) const
     { 
-      Standard_NoSuchObject_Raise_if (!More(), "NCollection_Map::Iterator::Key");  
       return ((MapNode *) myNode)->Value();
     }
   };

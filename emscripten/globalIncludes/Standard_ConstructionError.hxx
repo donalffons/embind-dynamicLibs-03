@@ -23,7 +23,6 @@
 #include <Standard_DomainError.hxx>
 
 class Standard_ConstructionError;
-DEFINE_STANDARD_HANDLE(Standard_ConstructionError, Standard_DomainError)
 
 #if !defined No_Exception && !defined No_Standard_ConstructionError
   #define Standard_ConstructionError_Raise_if(CONDITION, MESSAGE) \
@@ -31,7 +30,5 @@ DEFINE_STANDARD_HANDLE(Standard_ConstructionError, Standard_DomainError)
 #else
   #define Standard_ConstructionError_Raise_if(CONDITION, MESSAGE)
 #endif
-
-DEFINE_STANDARD_EXCEPTION(Standard_ConstructionError, Standard_DomainError)
 
 #endif // _Standard_ConstructionError_HeaderFile

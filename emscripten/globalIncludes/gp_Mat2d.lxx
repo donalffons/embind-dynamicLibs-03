@@ -13,7 +13,6 @@
 // commercial license or contractual agreement.
 
 #include <gp.hxx>
-#include <Standard_OutOfRange.hxx>
 
 #define Mat2d00 ((Standard_Real*)M)[0]
 #define Mat2d01 ((Standard_Real*)M)[1]
@@ -71,8 +70,6 @@ inline void gp_Mat2d::SetValue (const Standard_Integer Row,
 				const Standard_Integer Col, 
 				const Standard_Real Value)
 {
-  Standard_OutOfRange_Raise_if
-    (Row < 1 || Row > 2 || Col < 1 || Col > 2, " ");
   matrix[Row-1][Col-1] = Value;
 }
 
@@ -85,8 +82,6 @@ inline Standard_Real gp_Mat2d::Determinant () const
 inline const Standard_Real& gp_Mat2d::Value (const Standard_Integer Row, 
 					     const Standard_Integer Col) const
 {
-  Standard_OutOfRange_Raise_if
-    (Row < 1 || Row > 2 || Col < 1 || Col > 2, " ");
   return matrix[Row-1][Col-1];
 }
 
@@ -94,8 +89,6 @@ inline  Standard_Real&
 gp_Mat2d::ChangeValue (const Standard_Integer Row, 
 		       const Standard_Integer Col)
 {
-  Standard_OutOfRange_Raise_if
-    (Row < 1 || Row > 2 || Col < 1 || Col > 2, " ");
   return matrix[Row-1][Col-1];
 }
 

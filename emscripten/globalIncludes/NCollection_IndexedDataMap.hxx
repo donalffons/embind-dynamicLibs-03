@@ -19,11 +19,8 @@
 #include <NCollection_BaseMap.hxx>
 #include <NCollection_TListNode.hxx>
 #include <Standard_TypeMismatch.hxx>
-#include <Standard_NoSuchObject.hxx>
 #include <NCollection_StlIterator.hxx>
 #include <NCollection_DefaultHasher.hxx>
-
-#include <Standard_OutOfRange.hxx>
 
 /**
  * Purpose:     An indexed map is used  to store keys and to  bind
@@ -113,21 +110,18 @@ private:
     //! Value access
     const TheItemType& Value(void) const
     {  
-      Standard_NoSuchObject_Raise_if(!More(), "NCollection_IndexedDataMap::Iterator::Value");
       return myMap->FindFromIndex(myIndex);
     }
 
     //! ChangeValue access
     TheItemType& ChangeValue(void) const
     {  
-      Standard_NoSuchObject_Raise_if(!More(), "NCollection_IndexedDataMap::Iterator::ChangeValue");
       return myMap->ChangeFromIndex(myIndex);
     }
 
     //! Key
     const TheKeyType& Key() const
     {
-      Standard_NoSuchObject_Raise_if(!More(), "NCollection_IndexedDataMap::Iterator::Key");
       return myMap->FindKey(myIndex);
     }
 
@@ -298,10 +292,6 @@ private:
                    const TheKeyType&      theKey1,
                    const TheItemType&     theItem)
   {
-    Standard_OutOfRange_Raise_if (theIndex < 1 || theIndex > Extent(),
-                                  "NCollection_IndexedDataMap::Substitute : "
-                                  "Index is out of range");
-
     // check if theKey1 is not already in the map
     const Standard_Integer iK1 = Hasher::HashCode (theKey1, NbBuckets());
     IndexedDataMapNode* p = (IndexedDataMapNode *) myData1[iK1];
@@ -311,8 +301,6 @@ private:
       {
         if (p->Index() != theIndex)
         {
-          throw Standard_DomainError ("NCollection_IndexedDataMap::Substitute : "
-                                      "Attempt to substitute existing key");
         }
         p->Key1() = theKey1;
         p->ChangeValue() = theItem;
@@ -347,9 +335,6 @@ private:
   void Swap (const Standard_Integer theIndex1,
              const Standard_Integer theIndex2)
   {
-    Standard_OutOfRange_Raise_if (theIndex1 < 1 || theIndex1 > Extent()
-                               || theIndex2 < 1 || theIndex2 > Extent(), "NCollection_IndexedDataMap::Swap");
-
     if (theIndex1 == theIndex2)
     {
       return;
@@ -366,7 +351,6 @@ private:
   void RemoveLast (void)
   {
     const Standard_Integer aLastIndex = Extent();
-    Standard_OutOfRange_Raise_if (aLastIndex == 0, "NCollection_IndexedDataMap::RemoveLast");
 
     // Find the node for the last index and remove it
     IndexedDataMapNode* p = (IndexedDataMapNode* )myData2[aLastIndex - 1];
@@ -393,7 +377,6 @@ private:
   void RemoveFromIndex(const Standard_Integer theIndex)
   {
     const Standard_Integer aLastInd = Extent();
-    Standard_OutOfRange_Raise_if(theIndex < 1 || theIndex > aLastInd, "NCollection_IndexedDataMap::Remove");
     if (theIndex != aLastInd)
     {
       Swap (theIndex, aLastInd);
@@ -414,7 +397,6 @@ private:
   //! FindKey
   const TheKeyType& FindKey (const Standard_Integer theIndex) const
   {
-    Standard_OutOfRange_Raise_if (theIndex < 1 || theIndex > Extent(), "NCollection_IndexedDataMap::FindKey");
     IndexedDataMapNode* aNode = (IndexedDataMapNode* )myData2[theIndex - 1];
     return aNode->Key1();
   }
@@ -422,7 +404,6 @@ private:
   //! FindFromIndex
   const TheItemType& FindFromIndex (const Standard_Integer theIndex) const
   {
-    Standard_OutOfRange_Raise_if (theIndex < 1 || theIndex > Extent(), "NCollection_IndexedDataMap::FindFromIndex");
     IndexedDataMapNode* aNode = (IndexedDataMapNode* )myData2[theIndex - 1];
     return aNode->Value();
   }
@@ -433,7 +414,6 @@ private:
   //! ChangeFromIndex
   TheItemType& ChangeFromIndex (const Standard_Integer theIndex)
   {
-    Standard_OutOfRange_Raise_if (theIndex < 1 || theIndex > Extent(), "NCollection_IndexedDataMap::ChangeFromIndex");
     IndexedDataMapNode* aNode = (IndexedDataMapNode* )myData2[theIndex - 1];
     return aNode->ChangeValue();
   }
@@ -460,8 +440,6 @@ private:
   //! FindFromKey
   const TheItemType& FindFromKey(const TheKeyType& theKey1) const
   {
-    Standard_NoSuchObject_Raise_if (IsEmpty(), "NCollection_IndexedDataMap::FindFromKey");
-
     IndexedDataMapNode* pNode1 = (IndexedDataMapNode* )myData1[Hasher::HashCode(theKey1,NbBuckets())];
     while (pNode1)
     {
@@ -471,14 +449,11 @@ private:
       }
       pNode1 = (IndexedDataMapNode*) pNode1->Next();
     }
-    throw Standard_NoSuchObject("NCollection_IndexedDataMap::FindFromKey");
   }
 
   //! ChangeFromKey
   TheItemType& ChangeFromKey (const TheKeyType& theKey1)
   {
-    Standard_NoSuchObject_Raise_if (IsEmpty(), "NCollection_IndexedDataMap::ChangeFromKey");
-
     IndexedDataMapNode* pNode1 = (IndexedDataMapNode* )myData1[Hasher::HashCode(theKey1,NbBuckets())];
     while (pNode1)
     {
@@ -488,7 +463,6 @@ private:
       }
       pNode1 = (IndexedDataMapNode*) pNode1->Next();
     }
-    throw Standard_NoSuchObject("NCollection_IndexedDataMap::ChangeFromKey");
   }
 
   //! Seek returns pointer to Item by Key. Returns

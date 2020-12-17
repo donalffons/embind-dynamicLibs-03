@@ -20,10 +20,8 @@
 #include <Standard_Type.hxx>
 #include <Standard_DefineException.hxx>
 #include <Standard_SStream.hxx>
-#include <Standard_Failure.hxx>
 
 class Standard_ProgramError;
-DEFINE_STANDARD_HANDLE(Standard_ProgramError, Standard_Failure)
 
 #if !defined No_Exception && !defined No_Standard_ProgramError
   #define Standard_ProgramError_Raise_if(CONDITION, MESSAGE) \
@@ -31,7 +29,5 @@ DEFINE_STANDARD_HANDLE(Standard_ProgramError, Standard_Failure)
 #else
   #define Standard_ProgramError_Raise_if(CONDITION, MESSAGE)
 #endif
-
-DEFINE_STANDARD_EXCEPTION(Standard_ProgramError, Standard_Failure)
 
 #endif // _Standard_ProgramError_HeaderFile

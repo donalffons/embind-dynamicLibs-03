@@ -68,7 +68,7 @@ Standard_Boolean Standard_Transient::IsKind (const Standard_CString theTypeName)
 Standard_Transient* Standard_Transient::This() const
 {
   if (GetRefCount() == 0)
-    throw Standard_ProgramError("Attempt to create handle to object created in stack, not yet constructed, or destroyed");
+    return nullptr;
   return const_cast<Standard_Transient*> (this);
 }
 

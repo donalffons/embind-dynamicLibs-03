@@ -19,8 +19,6 @@
 #include <NCollection_TListIterator.hxx>
 #include <NCollection_StlIterator.hxx>
 
-#include <Standard_NoSuchObject.hxx>
-
 /**
  * Purpose:      Simple list to link  items together keeping the first 
  *               and the last one.
@@ -103,28 +101,24 @@ public:
   //! First item
   const TheItemType& First (void) const
   {
-    Standard_NoSuchObject_Raise_if (IsEmpty(), "NCollection_List::First");
     return ((const ListNode *) PFirst())->Value();
   }
 
   //! First item (non-const)
   TheItemType& First (void)
   {
-    Standard_NoSuchObject_Raise_if (IsEmpty(), "NCollection_List::First");
     return ((ListNode *) PFirst())->ChangeValue();
   }
 
   //! Last item
   const TheItemType& Last (void) const
   { 
-    Standard_NoSuchObject_Raise_if (IsEmpty(), "NCollection_List::Last");
     return ((const ListNode *) PLast())->Value();
   }
 
   //! Last item (non-const)
   TheItemType& Last (void)
   { 
-    Standard_NoSuchObject_Raise_if (IsEmpty(), "NCollection_List::Last");
     return ((ListNode *) PLast())->ChangeValue();
   }
 

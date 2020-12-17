@@ -23,7 +23,6 @@
 #include <Standard_DomainError.hxx>
 
 class Standard_NoSuchObject;
-DEFINE_STANDARD_HANDLE(Standard_NoSuchObject, Standard_DomainError)
 
 #if !defined No_Exception && !defined No_Standard_NoSuchObject
   #define Standard_NoSuchObject_Raise_if(CONDITION, MESSAGE) \
@@ -31,7 +30,5 @@ DEFINE_STANDARD_HANDLE(Standard_NoSuchObject, Standard_DomainError)
 #else
   #define Standard_NoSuchObject_Raise_if(CONDITION, MESSAGE)
 #endif
-
-DEFINE_STANDARD_EXCEPTION(Standard_NoSuchObject, Standard_DomainError)
 
 #endif // _Standard_NoSuchObject_HeaderFile

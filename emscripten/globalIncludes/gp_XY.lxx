@@ -14,8 +14,6 @@
 
 // LPA et JCV 07/92 
 
-#include <Standard_OutOfRange.hxx>
-#include <Standard_ConstructionError.hxx>
 #include <gp.hxx>
 #include <gp_Mat2d.hxx>
 
@@ -27,7 +25,6 @@ inline gp_XY::gp_XY (const Standard_Real X,
 inline void gp_XY::SetCoord (const Standard_Integer i,
 			     const Standard_Real X)
 {
-  Standard_OutOfRange_Raise_if( i < 1 || i > 2,NULL);
   (&x)[i-1] = X;
 }
 
@@ -43,13 +40,11 @@ inline void gp_XY::SetY (const Standard_Real Y)
 
 inline Standard_Real gp_XY::Coord (const Standard_Integer i) const
 {
-  Standard_OutOfRange_Raise_if( i < 1 || i > 2,NULL);
   return (&x)[i-1];
 }
 
 inline Standard_Real& gp_XY::ChangeCoord (const Standard_Integer theIndex)
 {
-  Standard_OutOfRange_Raise_if(theIndex < 1 || theIndex > 2,NULL);
   return (&x)[theIndex - 1];
 }
 
@@ -151,16 +146,12 @@ inline gp_XY gp_XY::Multiplied (const gp_Mat2d& Matrix) const
 inline void gp_XY::Normalize ()
 {
   Standard_Real D = Modulus();
-  Standard_ConstructionError_Raise_if (D <= gp::Resolution(),
-                                       "gp_XY::Normalize() - vector has zero norm");
   x = x / D;   y = y / D;
 }
 
 inline gp_XY gp_XY::Normalized () const
 {
   Standard_Real D = Modulus();
-  Standard_ConstructionError_Raise_if (D <= gp::Resolution(),
-                                       "gp_XY::Normalized() - vector has zero norm");
   return gp_XY (x / D, y / D);
 }
 

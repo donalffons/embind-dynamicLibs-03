@@ -94,8 +94,6 @@ inline const gp_Mat2d& gp_Trsf2d::HVectorialPart () const
 inline Standard_Real gp_Trsf2d::Value (const Standard_Integer Row,
 				       const Standard_Integer Col) const
 {
-  Standard_OutOfRange_Raise_if
-    (Row < 1 || Row > 2 || Col < 1 || Col > 3, " ");
   if (Col < 3) return scale * matrix.Value (Row, Col);
   else         return loc.Coord (Row);
 }

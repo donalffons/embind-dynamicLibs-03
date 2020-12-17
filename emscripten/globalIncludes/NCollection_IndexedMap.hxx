@@ -19,11 +19,8 @@
 #include <NCollection_BaseMap.hxx>
 #include <NCollection_TListNode.hxx>
 #include <NCollection_StlIterator.hxx>
-#include <Standard_NoSuchObject.hxx>
 
 #include <NCollection_DefaultHasher.hxx>
-
-#include <Standard_OutOfRange.hxx>
 
 /**
  * Purpose:     An indexed map is used to  store  keys and to bind
@@ -97,7 +94,6 @@ protected:
     //! Value access
     const TheKeyType& Value(void) const
     {
-      Standard_NoSuchObject_Raise_if(!More(), "NCollection_IndexedMap::Iterator::Value");
       return myMap->FindKey(myIndex);
     }
 
@@ -253,10 +249,6 @@ protected:
   void Substitute (const Standard_Integer theIndex,
                    const TheKeyType& theKey1)
   {
-    Standard_OutOfRange_Raise_if (theIndex < 1 || theIndex > Extent(),
-                                  "NCollection_IndexedMap::Substitute : "
-                                  "Index is out of range");
-
     // check if theKey1 is not already in the map
     Standard_Integer iK1 = Hasher::HashCode (theKey1, NbBuckets());
     IndexedMapNode* p = (IndexedMapNode *) myData1[iK1];
@@ -266,8 +258,6 @@ protected:
       {
         if (p->Index() != theIndex)
         {
-          throw Standard_DomainError ("NCollection_IndexedMap::Substitute : "
-                                      "Attempt to substitute existing key");
         }
         p->Key1() = theKey1;
         return;
@@ -300,9 +290,6 @@ protected:
   void Swap (const Standard_Integer theIndex1,
              const Standard_Integer theIndex2)
   {
-    Standard_OutOfRange_Raise_if (theIndex1 < 1 || theIndex1 > Extent()
-                               || theIndex2 < 1 || theIndex2 > Extent(), "NCollection_IndexedMap::Swap");
-
     if (theIndex1 == theIndex2)
     {
       return;
@@ -319,7 +306,6 @@ protected:
   void RemoveLast (void)
   {
     const Standard_Integer aLastIndex = Extent();
-    Standard_OutOfRange_Raise_if (aLastIndex == 0, "NCollection_IndexedMap::RemoveLast");
 
     // Find the node for the last index and remove it
     IndexedMapNode* p = (IndexedMapNode* )myData2[aLastIndex - 1];
@@ -345,7 +331,6 @@ protected:
   //! Caution! The index of the last key can be changed.
   void RemoveFromIndex(const Standard_Integer theIndex)
   {
-    Standard_OutOfRange_Raise_if(theIndex < 1 || theIndex > Extent(), "NCollection_IndexedMap::RemoveFromIndex");
     const Standard_Integer aLastInd = Extent();
     if (theIndex != aLastInd)
     {
@@ -371,7 +356,6 @@ protected:
   //! FindKey
   const TheKeyType& FindKey (const Standard_Integer theIndex) const
   {
-    Standard_OutOfRange_Raise_if (theIndex < 1 || theIndex > Extent(), "NCollection_IndexedMap::FindKey");
     IndexedMapNode* pNode2 = (IndexedMapNode* )myData2[theIndex - 1];
     return pNode2->Key1();
   }

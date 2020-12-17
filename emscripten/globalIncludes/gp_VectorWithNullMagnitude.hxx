@@ -23,7 +23,6 @@
 #include <Standard_DomainError.hxx>
 
 class gp_VectorWithNullMagnitude;
-DEFINE_STANDARD_HANDLE(gp_VectorWithNullMagnitude, Standard_DomainError)
 
 #if !defined No_Exception && !defined No_gp_VectorWithNullMagnitude
   #define gp_VectorWithNullMagnitude_Raise_if(CONDITION, MESSAGE) \
@@ -31,7 +30,5 @@ DEFINE_STANDARD_HANDLE(gp_VectorWithNullMagnitude, Standard_DomainError)
 #else
   #define gp_VectorWithNullMagnitude_Raise_if(CONDITION, MESSAGE)
 #endif
-
-DEFINE_STANDARD_EXCEPTION(gp_VectorWithNullMagnitude, Standard_DomainError)
 
 #endif // _gp_VectorWithNullMagnitude_HeaderFile

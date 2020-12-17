@@ -17,7 +17,6 @@ emcc \
   -s ASSERTIONS=1 \
   ./Standard.cxx \
   ./Standard_Transient.cxx \
-  ./Standard_Failure.cxx \
   ./Standard_MMgrRaw.cxx \
   ./Standard_MMgrRoot.cxx \
   ./NCollection_BaseAllocator.cxx \
