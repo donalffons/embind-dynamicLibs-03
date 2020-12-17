@@ -48,9 +48,6 @@ public:
   //! Destructor must be virtual
   virtual ~Standard_Transient() {}
 
-  //! Memory deallocator for transient classes
-  Standard_EXPORT virtual void Delete() const;
-
 public: 
   //!@name Support of run-time type information (RTTI)
 

@@ -16,7 +16,6 @@ emcc \
   -s SIDE_MODULE=1 \
   -s ASSERTIONS=1 \
   ./Standard.cxx \
-  ./Standard_Transient.cxx \
   ./Standard_MMgrRaw.cxx \
   ./NCollection_BaseAllocator.cxx \
   -o ./build/library1.wasm
