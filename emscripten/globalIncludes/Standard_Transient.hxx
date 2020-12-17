@@ -58,9 +58,6 @@ public:
 
   static const char* get_type_name () { return "Standard_Transient"; }
 
-  //! Returns type descriptor of Standard_Transient class
-  Standard_EXPORT static const opencascade::handle<Standard_Type>& get_type_descriptor ();
-
 public:
   //!@name Reference counting, for use by handle<>
 

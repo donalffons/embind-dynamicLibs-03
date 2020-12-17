@@ -86,9 +86,6 @@ namespace opencascade
 
 #endif /* ! defined(OCCT_CHECK_BASE_CLASS) */
 
-//! Helper macro to get instance of a type descriptor for a class in a legacy way.
-#define STANDARD_TYPE(theType) theType::get_type_descriptor()
-
 //! Helper macro to be included in definition of the classes inheriting
 //! Standard_Transient to enable use of OCCT RTTI.
 //!
@@ -98,7 +95,6 @@ namespace opencascade
 public: \
   typedef Base base_type; \
   static const char* get_type_name () { return #Class; OCCT_CHECK_BASE_CLASS(Class,Base) } \
-  static const Handle(Standard_Type)& get_type_descriptor () { return Standard_Type::Instance<Class>(); } \
 
 //! Helper macro to be included in definition of the classes inheriting
 //! Standard_Transient to enable use of OCCT RTTI.
@@ -108,11 +104,6 @@ public: \
 public: \
   typedef Base base_type; \
   static const char* get_type_name () { return #Class; OCCT_CHECK_BASE_CLASS(Class,Base) } \
-  Standard_EXPORT static const Handle(Standard_Type)& get_type_descriptor (); \
-
-//! Defines implementation of type descriptor and DynamicType() function
-#define IMPLEMENT_STANDARD_RTTIEXT(Class,Base) \
-  const Handle(Standard_Type)& Class::get_type_descriptor () { return Standard_Type::Instance<Class>(); } \
 
 // forward declaration of type_instance class
 namespace opencascade {

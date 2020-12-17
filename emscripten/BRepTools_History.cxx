@@ -19,7 +19,6 @@
 #include <TopTools_IndexedMapOfShape.hxx>
 
 // Implement the OCCT RTTI for the type.
-IMPLEMENT_STANDARD_RTTIEXT(BRepTools_History, Standard_Transient)
 
 namespace
 {

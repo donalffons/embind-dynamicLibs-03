@@ -15,8 +15,6 @@
 
 #include <NCollection_BaseAllocator.hxx>
 
-IMPLEMENT_STANDARD_RTTIEXT(NCollection_BaseAllocator,Standard_Transient)
-
 //=======================================================================
 //function : Allocate
 //purpose  : Standard allocation
