@@ -15,15 +15,6 @@
 
 #include <NCollection_BaseAllocator.hxx>
 
-#include <NCollection_IncAllocator.hxx>
-#include <NCollection_DataMap.hxx>
-#include <NCollection_Map.hxx>
-#include <NCollection_List.hxx>
-#include <Standard_Mutex.hxx>
-#include <fstream>
-#include <iomanip>
-
-
 IMPLEMENT_STANDARD_RTTIEXT(NCollection_BaseAllocator,Standard_Transient)
 
 //=======================================================================

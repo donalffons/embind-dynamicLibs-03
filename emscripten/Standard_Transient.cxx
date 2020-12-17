@@ -14,9 +14,6 @@
 
 #include <Standard_Type.hxx>
 #include <Standard_Transient.hxx>
-#include <Standard_Atomic.hxx>
-#include <Standard_CString.hxx>
-#include <Standard_ProgramError.hxx>
 
 void Standard_Transient::Delete() const
 { 
