@@ -63,29 +63,7 @@ public:
 
   //! Returns a type descriptor about this object.
   Standard_EXPORT virtual const opencascade::handle<Standard_Type>& DynamicType() const;
-
-  //! Returns a true value if this is an instance of Type.
-  Standard_EXPORT Standard_Boolean IsInstance(const opencascade::handle<Standard_Type>& theType) const;  
-
-  //! Returns a true value if this is an instance of TypeName.
-  Standard_EXPORT Standard_Boolean IsInstance(const Standard_CString theTypeName) const;  
-
-  //! Returns true if this is an instance of Type or an
-  //! instance of any class that inherits from Type.
-  //! Note that multiple inheritance is not supported by OCCT RTTI mechanism.
-  Standard_EXPORT Standard_Boolean IsKind(const opencascade::handle<Standard_Type>& theType) const;
-
-  //! Returns true if this is an instance of TypeName or an
-  //! instance of any class that inherits from TypeName.
-  //! Note that multiple inheritance is not supported by OCCT RTTI mechanism.
-  Standard_EXPORT Standard_Boolean IsKind(const Standard_CString theTypeName) const;
-
-  //! Returns non-const pointer to this object (like const_cast).
-  //! For protection against creating handle to objects allocated in stack
-  //! or call from constructor, it will raise exception Standard_ProgramError
-  //! if reference counter is zero.
-  Standard_EXPORT Standard_Transient* This() const;
-
+  
 public:
   //!@name Reference counting, for use by handle<>
 

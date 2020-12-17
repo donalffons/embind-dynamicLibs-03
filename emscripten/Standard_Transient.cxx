@@ -35,43 +35,6 @@ const Handle(Standard_Type)& Standard_Transient::DynamicType() const
   return get_type_descriptor();
 }
 
-//
-//
-Standard_Boolean Standard_Transient::IsInstance(const Handle(Standard_Type) &AType) const
-{
-  return (AType == DynamicType());
-}
-
-//
-//
-Standard_Boolean Standard_Transient::IsInstance(const Standard_CString theTypeName) const
-{
-  return IsEqual ( DynamicType()->Name(), theTypeName );
-}
-
-//
-//
-Standard_Boolean Standard_Transient::IsKind (const Handle(Standard_Type)& aType) const
-{
-  return DynamicType()->SubType ( aType );
-}
-
-//
-//
-Standard_Boolean Standard_Transient::IsKind (const Standard_CString theTypeName) const
-{
-  return DynamicType()->SubType ( theTypeName );
-}
-
-//
-//
-Standard_Transient* Standard_Transient::This() const
-{
-  if (GetRefCount() == 0)
-    return nullptr;
-  return const_cast<Standard_Transient*> (this);
-}
-
 // Increment reference counter
 void Standard_Transient::IncrementRefCounter() const
 {
