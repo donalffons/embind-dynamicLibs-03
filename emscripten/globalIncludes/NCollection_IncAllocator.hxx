@@ -67,12 +67,6 @@ class NCollection_IncAllocator : public NCollection_BaseAllocator
   //! Destructor (calls Clean() internally)
   Standard_EXPORT ~NCollection_IncAllocator     ();
 
-  //! Reallocation: it is always allowed but is only efficient with the
-  //! last allocated item
-  Standard_EXPORT void *        Reallocate      (void * anAddress,
-                                                 const size_t oldSize,
-                                                 const size_t newSize);
-
   //! Re-initialize the allocator so that the next Allocate call should
   //! start allocating in the very begining as though the allocator is just
   //! constructed. Warning: make sure that all previously allocated data are

@@ -53,11 +53,6 @@ public:
     thePtr = 0;
   }
   
-  //! Reallocates memory blocks
-  //! aStorage - previously allocated memory block
-  //! aNewSize - new size in bytes
-  Standard_EXPORT static Standard_Address Reallocate (const Standard_Address aStorage, const Standard_Size aNewSize);
-  
   //! Allocates aligned memory blocks.
   //! Should be used with CPU instructions which require specific alignment.
   //! For example: SSE requires 16 bytes, AVX requires 32 bytes.

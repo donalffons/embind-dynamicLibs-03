@@ -122,7 +122,6 @@ void* NCollection_BaseVector::expandV (const Standard_Integer theIndex)
   const Standard_Integer nNewBlock = myNBlocks + 1 + (theIndex - myLength) / myIncrement;
   if (myCapacity < nNewBlock)
   {
-    // Reallocate the array myData 
     do myCapacity += GetCapacity(myIncrement); while (myCapacity <= nNewBlock);
 
     myData = allocMemBlocks (myCapacity, myData, myNBlocks);

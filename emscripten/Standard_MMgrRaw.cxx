@@ -53,23 +53,3 @@ void Standard_MMgrRaw::Free(Standard_Address theStorage)
 {
   free(theStorage);
 }
-
-//=======================================================================
-//function : Reallocate
-//purpose  : 
-//=======================================================================
-
-Standard_Address Standard_MMgrRaw::Reallocate(Standard_Address theStorage,
-					      const Standard_Size theSize)
-{
-  // the size is rounded up to 4 since some OCC classes
-  // (e.g. TCollection_AsciiString) assume memory to be double word-aligned
-  const Standard_Size aRoundSize = (theSize + 3) & ~0x3;
-  Standard_Address newStorage = (Standard_Address)realloc(theStorage, aRoundSize);
-  if ( ! newStorage )
-    return nullptr;
-  // Note that it is not possible to ensure that additional memory
-  // allocated by realloc will be cleared (so as to satisfy myClear mode);
-  // in order to do that we would need using memset...
-  return newStorage;
-}

@@ -79,11 +79,6 @@ class Standard_MMgrOpt : public Standard_MMgrRoot
   //! Allocate aSize bytes; see class description above
   Standard_EXPORT virtual Standard_Address Allocate(const Standard_Size aSize);
   
-  //! Reallocate previously allocated aPtr to a new size; new address is returned.
-  //! In case that aPtr is null, the function behaves exactly as Allocate.
-  Standard_EXPORT virtual Standard_Address Reallocate (Standard_Address thePtr, 
-                                                       const Standard_Size theSize);
-  
   //! Free previously allocated block.
   //! Note that block can not all blocks are released to the OS by this 
   //! method (see class description)

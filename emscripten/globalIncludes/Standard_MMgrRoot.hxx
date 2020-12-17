@@ -36,11 +36,6 @@ class Standard_MMgrRoot
   //! of some classes in OCC (e.g. TCollection_AsciiString)
   Standard_EXPORT virtual Standard_Address Allocate (const Standard_Size theSize)=0;
   
-  //! Reallocate previously allocated memory to contain at least theSize bytes.
-  //! In case of success, new pointer is returned.
-  Standard_EXPORT virtual Standard_Address Reallocate (Standard_Address thePtr, 
-                                                       const Standard_Size theSize)=0;
-  
   //! Frees previously allocated memory at specified address.
   Standard_EXPORT virtual void Free(Standard_Address thePtr)=0;
   

@@ -251,17 +251,6 @@ void Standard::Free (Standard_Address theStorage)
 }
 
 //=======================================================================
-//function : Reallocate
-//purpose  : 
-//=======================================================================
-
-Standard_Address Standard::Reallocate (Standard_Address theStorage,
-				       const Standard_Size theSize)
-{
-  return Standard_MMgrFactory::GetMMgr()->Reallocate (theStorage, theSize);
-}
-
-//=======================================================================
 //function : Purge
 //purpose  : 
 //=======================================================================

@@ -48,17 +48,6 @@ void Standard::Free (Standard_Address theStorage)
 }
 
 //=======================================================================
-//function : Reallocate
-//purpose  : 
-//=======================================================================
-
-Standard_Address Standard::Reallocate (Standard_Address theStorage,
-				       const Standard_Size theSize)
-{
-  return nullptr;
-}
-
-//=======================================================================
 //function : Purge
 //purpose  : 
 //=======================================================================
