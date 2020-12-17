@@ -37,8 +37,6 @@ class Standard_MMgrRaw
   //! Free allocated memory. The pointer is nullified.
   Standard_EXPORT virtual void Free (Standard_Address thePtr);
 
-  Standard_EXPORT virtual Standard_Integer Purge(Standard_Boolean isDestroyed=Standard_False);
-
  protected:
   Standard_Boolean myClear; //! Option to nullify allocated memory
 };

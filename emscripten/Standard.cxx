@@ -67,8 +67,6 @@ Standard_MMgrFactory::Standard_MMgrFactory()
 
 Standard_MMgrFactory::~Standard_MMgrFactory()
 {
-  if (  myFMMgr )
-    myFMMgr->Purge(Standard_True);
 }
 
 Standard_MMgrRaw* Standard_MMgrFactory::GetMMgr()
@@ -95,14 +93,4 @@ Standard_Address Standard::Allocate(const Standard_Size size)
 void Standard::Free (Standard_Address theStorage)
 {
   Standard_MMgrFactory::GetMMgr()->Free(theStorage);
-}
-
-//=======================================================================
-//function : Purge
-//purpose  : 
-//=======================================================================
-
-Standard_Integer Standard::Purge()
-{
-  return Standard_MMgrFactory::GetMMgr()->Purge();
 }

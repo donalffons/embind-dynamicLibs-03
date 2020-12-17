@@ -52,12 +52,6 @@ public:
     Free ((void*)thePtr);
     thePtr = 0;
   }
-  
-  //! Deallocates the storage retained on the free list
-  //! and clears the list.
-  //! Returns non-zero if some memory has been actually freed.
-  Standard_EXPORT static Standard_Integer Purge();
-
 };
 
 // include definition of handle to make it always visible
