@@ -15,9 +15,6 @@
 
 #include <BRepTools_History.hxx>
 
-#include <TopExp.hxx>
-#include <TopTools_IndexedMapOfShape.hxx>
-
 // Implement the OCCT RTTI for the type.
 
 namespace

@@ -17,7 +17,6 @@
 #define _BRepTools_History_HeaderFile
 
 #include <NCollection_Handle.hxx>
-#include <TopExp.hxx>
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
 #include <TopTools_MapOfShape.hxx>
 
@@ -101,36 +100,6 @@ public: //! @name Constructors for History creation
   BRepTools_History(const TopTools_ListOfShape& theArguments,
                     TheAlgo& theAlgo)
   {
-    // Map all argument shapes to save them in history
-    TopTools_IndexedMapOfShape anArgsMap;
-    TopTools_ListIteratorOfListOfShape aIt(theArguments);
-    for (; aIt.More(); aIt.Next())
-    {
-      if (!aIt.Value().IsNull())
-        TopExp::MapShapes(aIt.Value(), anArgsMap);
-    }
-
-    // Copy the history for all supported shapes from the algorithm
-    Standard_Integer i, aNb = anArgsMap.Extent();
-    for (i = 1; i <= aNb; ++i)
-    {
-      const TopoDS_Shape& aS = anArgsMap(i);
-      if (!IsSupportedType(aS))
-        continue;
-
-      if (theAlgo.IsDeleted(aS))
-        Remove(aS);
-
-      // Check Modified
-      const TopTools_ListOfShape& aModified = theAlgo.Modified(aS);
-      for (aIt.Initialize(aModified); aIt.More(); aIt.Next())
-        AddModified(aS, aIt.Value());
-
-      // Check Generated
-      const TopTools_ListOfShape& aGenerated = theAlgo.Generated(aS);
-      for (aIt.Initialize(aGenerated); aIt.More(); aIt.Next())
-        AddGenerated(aS, aIt.Value());
-    }
   }
 
 public:
