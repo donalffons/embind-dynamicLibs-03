@@ -3,7 +3,6 @@
 
 #include <Standard_Transient.hxx>
 #include <Standard_Type.hxx>
-#include <NCollection_TypeDef.hxx>
 
 class NCollection_BaseAllocator : public Standard_Transient
 {

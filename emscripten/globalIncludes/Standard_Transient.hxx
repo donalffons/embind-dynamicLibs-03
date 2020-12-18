@@ -19,68 +19,11 @@
 #include <Standard_DefineAlloc.hxx>
 #include <Standard_PrimitiveTypes.hxx>
 
-class Standard_Type;
-
-namespace opencascade {
-  template <class T> class handle;
-}
-
-//! Abstract class which forms the root of the entire 
-//! Transient class hierarchy.
-
 class Standard_Transient
 {
 public:
-  // Standard OCCT memory allocation stuff
   DEFINE_STANDARD_ALLOC
-
-public:
-
-  //! Empty constructor
-  Standard_Transient() : myRefCount_(0) {}
-
-  //! Copy constructor -- does nothing
-  Standard_Transient (const Standard_Transient&) : myRefCount_(0) {}
-
-  //! Assignment operator, needed to avoid copying reference counter
-  Standard_Transient& operator= (const Standard_Transient&) { return *this; }
-
-  //! Destructor must be virtual
-  virtual ~Standard_Transient() {}
-
-public: 
-  //!@name Support of run-time type information (RTTI)
-
-  typedef void base_type;
-
-  static const char* get_type_name () { return "Standard_Transient"; }
-
-public:
-  //!@name Reference counting, for use by handle<>
-
-  //! Get the reference counter of this object
-  Standard_Integer GetRefCount() const { return myRefCount_; }
-
-private:
-
-  //! Reference counter.
-  //! Note use of underscore, aimed to reduce probability 
-  //! of conflict with names of members of derived classes.
-  mutable volatile Standard_Integer myRefCount_;
 };
 
-
-//! Computes a hash code for the given transient object, in the range [1, theUpperBound]
-//! @param theTransientObject the transient object which hash code is to be computed
-//! @param theUpperBound the upper bound of the range a computing hash code must be within
-//! @return a computed hash code, in the range [1, theUpperBound]
-inline Standard_Integer HashCode (const Standard_Transient* const theTransientObject,
-                                  const Standard_Integer          theUpperBound)
-{
-  return ::HashCode (static_cast<const void*> (theTransientObject), theUpperBound);
-}
-
-//! Definition of Handle_Standard_Transient as typedef for compatibility
-typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
 
 #endif 
