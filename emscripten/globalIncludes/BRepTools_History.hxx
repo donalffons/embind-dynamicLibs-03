@@ -143,37 +143,6 @@ public: //! Methods to set the history.
   Standard_EXPORT void ReplaceModified(
     const TopoDS_Shape& theInitial, const TopoDS_Shape& theModified);
 
-  //! Clears the history.
-  void Clear()
-  {
-    myShapeToModified.Clear();
-    myShapeToGenerated.Clear();
-    myRemoved.Clear();
-  }
-
-public: //! Methods to read the history.
-
-  //! Returns all shapes generated from the shape.
-  Standard_EXPORT
-  const TopTools_ListOfShape& Generated(const TopoDS_Shape& theInitial) const;
-
-  //! Returns all shapes modified from the shape.
-  Standard_EXPORT
-  const TopTools_ListOfShape& Modified(const TopoDS_Shape& theInitial) const;
-
-  //! Returns 'true' if the shape is removed.
-  Standard_EXPORT
-  Standard_Boolean IsRemoved(const TopoDS_Shape& theInitial) const;
-
-  //! Returns 'true' if there any shapes with Generated elements present
-  Standard_Boolean HasGenerated() const { return !myShapeToGenerated.IsEmpty(); }
-
-  //! Returns 'true' if there any Modified shapes present
-  Standard_Boolean HasModified() const { return !myShapeToModified.IsEmpty(); }
-
-  //! Returns 'true' if there any removed shapes present
-  Standard_Boolean HasRemoved() const { return !myRemoved.IsEmpty(); }
-
 public: //! A method to merge a next history to this history.
 
   //! Merges the next history to this history.
@@ -197,15 +166,6 @@ public: //! A method to merge a next history to this history.
 
 public: //! A method to dump a history
 
-  //! Prints the brief description of the history into a stream
-  void Dump(Standard_OStream& theS)
-  {
-    theS << "History contains:\n";
-    theS << " - " << myRemoved.Extent() << " Deleted shapes;\n";
-    theS << " - " << myShapeToModified.Extent() << " Modified shapes;\n";
-    theS << " - " << myShapeToGenerated.Extent() << " Generated shapes.\n";
-  }
-
 private:
   //! Prepares the shapes generated from the first shape to set the second one
   //! as generated one from the first one by the addition or the replacement.
@@ -219,22 +179,6 @@ private:
   Standard_Boolean prepareModified(
     const TopoDS_Shape& theInitial, const TopoDS_Shape& theModified);
 
-private: //! Data to keep the history.
-
-  //! Maps each input shape to all shapes modified from it.
-  //! If an input shape is not bound to the map then
-  //! there is no shapes modified from the shape.
-  //! No any shape should be mapped to an empty list.
-  TopTools_DataMapOfShapeListOfShape myShapeToModified;
-
-  //! Maps each input shape to all shapes generated from it.
-  //! If an input shape is not bound to the map then
-  //! there is no shapes generated from the shape.
-  //! No any shape should be mapped to an empty list.
-  TopTools_DataMapOfShapeListOfShape myShapeToGenerated;
-
-  TopTools_MapOfShape myRemoved; //!< The removed shapes.
-
 private: //! Auxiliary members to read the history.
 
   //! An auxiliary empty list.
@@ -243,13 +187,6 @@ private: //! Auxiliary members to read the history.
   //! A method to export the auxiliary list.
   Standard_EXPORT static const TopTools_ListOfShape& emptyList();
 
-private:
-
-  //! Auxiliary messages.
-  static const char* myMsgUnsupportedType;
-  static const char* myMsgGeneratedAndRemoved;
-  static const char* myMsgModifiedAndRemoved;
-  static const char* myMsgGeneratedAndModified;
 };
 
 #endif // _BRepTools_History_HeaderFile
