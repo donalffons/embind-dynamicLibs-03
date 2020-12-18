@@ -10,15 +10,8 @@ public:
   {
     return Standard::Allocate (theSize);
   }
-  void  operator delete (void* theAddress)
-  {
-    Standard::Free (theAddress);
-  }
 
-  
   static void* Allocate (const size_t aSize);
-  
-  static void Free (void* thePtr);
 };
 
 #endif // _Standard_HeaderFile

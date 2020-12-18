@@ -10,10 +10,6 @@ public:
   {
     return Standard::Allocate (theSize);
   }
-  void  operator delete (void* theAddress)
-  {
-    Standard::Free (theAddress);
-  }
 };
 
 
