@@ -1,6 +1,8 @@
 #include <Standard.hxx>
 #include <Standard_MMgrRaw.hxx>
 
+auto mmgr = new Standard_MMgrRaw();
+
 class Standard_MMgrFactory
 {
 public:

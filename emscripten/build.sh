@@ -24,5 +24,5 @@ emcc \
   --bind ./empty-embind.cpp \
   -s SIDE_MODULE=1 \
   -s ASSERTIONS=1 \
-  ./BRepTools_History.cxx \
+  ./library2.cxx \
   -o ./build/library2.wasm
