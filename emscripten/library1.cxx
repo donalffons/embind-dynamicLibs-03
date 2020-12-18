@@ -1,6 +1,13 @@
 #include <Standard.hxx>
-#include <Standard_MMgrRaw.hxx>
 #include <iostream>
+
+class Standard_MMgrRaw
+{
+public:
+  virtual void* Allocate() {
+    return new int;
+  }
+};
 
 void* Standard::Allocate()
 {

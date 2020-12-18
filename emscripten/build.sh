@@ -11,7 +11,7 @@ emcc \
   -o ./build/main.js
 
 emcc \
-  ./library1/Standard.cxx \
+  ./library1.cxx \
   -I./globalIncludes \
   --bind ./empty-embind.cpp \
   -s SIDE_MODULE=1 \
@@ -19,7 +19,7 @@ emcc \
   -o ./build/library1.wasm
 
 emcc \
-  ./library2/library2.cxx \
+  ./library2.cxx \
   -I./globalIncludes \
   --bind ./empty-embind.cpp \
   -s SIDE_MODULE=1 \
