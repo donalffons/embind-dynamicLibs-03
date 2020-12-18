@@ -6,11 +6,6 @@
 class Standard 
 {
 public:
-  void* operator new (size_t theSize)
-  {
-    return Standard::Allocate ();
-  }
-
   static void* Allocate ();
 };
 

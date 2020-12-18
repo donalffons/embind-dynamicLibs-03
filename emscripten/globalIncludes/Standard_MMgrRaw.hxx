@@ -6,11 +6,9 @@
 class Standard_MMgrRaw
 {
 public:
-  virtual void* Allocate(){
+  virtual void* Allocate() {
     return new int;
   }
-  
-  virtual void Free (void* thePtr){}
 };
 
 #endif
