@@ -1826,9 +1826,19 @@ var ASM_CONSTS = {
     }
   Module["getMemory"] = getMemory;
   
+  function isInternalSym(symName) {
+      // TODO: find a way to mark these in the binary or avoid exporting them.
+      return [
+        '__cpp_exception',
+        '__wasm_apply_data_relocs',
+        '__dso_handle',
+        '__set_stack_limits'
+      ].indexOf(symName) != -1;
+    }
+  Module["isInternalSym"] = isInternalSym;
   function updateGOT(exports) {
       for (var symName in exports) {
-        if (symName == '__cpp_exception' || symName == '__dso_handle' || symName == '__wasm_apply_relocs') {
+        if (isInternalSym(symName)) {
           continue;
         }
   
@@ -13785,6 +13795,7 @@ var ASM_CONSTS = {
       HEAPU32[ptr+4>>2] = (num - HEAPU32[ptr>>2])/4294967296;
     }
   Module["writeI53ToU64Signaling"] = writeI53ToU64Signaling;
+
 
 
 
@@ -52391,6 +52402,7 @@ if (!Object.getOwnPropertyDescriptor(Module, "asmjsMangle")) Module["asmjsMangle
 if (!Object.getOwnPropertyDescriptor(Module, "resolveGlobalSymbol")) Module["resolveGlobalSymbol"] = function() { abort("'resolveGlobalSymbol' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "GOT")) Module["GOT"] = function() { abort("'GOT' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "GOTHandler")) Module["GOTHandler"] = function() { abort("'GOTHandler' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
+if (!Object.getOwnPropertyDescriptor(Module, "isInternalSym")) Module["isInternalSym"] = function() { abort("'isInternalSym' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "updateGOT")) Module["updateGOT"] = function() { abort("'updateGOT' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "relocateExports")) Module["relocateExports"] = function() { abort("'relocateExports' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "reportUndefinedSymbols")) Module["reportUndefinedSymbols"] = function() { abort("'reportUndefinedSymbols' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
