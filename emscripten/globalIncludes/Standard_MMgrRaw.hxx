@@ -5,13 +5,13 @@
 
 class Standard_MMgrRaw
 {
- public:
+public:
   virtual void* Allocate(const size_t aSize);
   
   virtual void Free (void* thePtr);
 
- protected:
-  bool myClear; //! Option to nullify allocated memory
+protected:
+  bool myClear;
 };
 
 #endif
