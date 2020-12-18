@@ -27,9 +27,16 @@ Standard_MMgrRaw* Standard_MMgrFactory::GetMMgr()
   return aFactory.myFMMgr;
 }
 
+#include <iostream>
+
 void* Standard::Allocate(const size_t size)
 {
-  return Standard_MMgrFactory::GetMMgr()->Allocate(size);
+  std::cout << "1" << std::endl;
+  auto a = Standard_MMgrFactory::GetMMgr();
+  std::cout << "2" << std::endl;
+  auto b = a->Allocate(size);
+  std::cout << "3" << std::endl;
+  return b;
 }
 
 void Standard::Free (void* theStorage)
