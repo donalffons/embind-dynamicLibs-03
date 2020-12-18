@@ -12,7 +12,6 @@ emcc \
 
 emcc \
   ./library1/Standard.cxx \
-  ./library1/Standard_MMgrRaw.cxx \
   -I./globalIncludes \
   --bind ./empty-embind.cpp \
   -s SIDE_MODULE=1 \
