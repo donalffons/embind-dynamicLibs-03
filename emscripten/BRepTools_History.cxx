@@ -17,36 +17,6 @@
 
 // Implement the OCCT RTTI for the type.
 
-namespace
-{
-
-//==============================================================================
-//function : add
-//purpose  : Adds the elements of the list to the map.
-//==============================================================================
-void add(TopTools_MapOfShape& theMap, const TopTools_ListOfShape& theList)
-{
-  for (TopTools_ListOfShape::Iterator aSIt(theList); aSIt.More(); aSIt.Next())
-  {
-    theMap.Add(aSIt.Value());
-  }
-}
-
-//==============================================================================
-//function : add
-//purpose  : Adds the elements of the collection to the list.
-//==============================================================================
-template<typename TCollection>
-void add(TopTools_ListOfShape& theList, const TCollection& theCollection)
-{
-  for (typename TCollection::Iterator aSIt(theCollection);
-    aSIt.More(); aSIt.Next())
-  {
-    theList.Append(aSIt.Value());
-  }
-}
-
-}
 
 //==============================================================================
 //function : AddGenerated
@@ -103,8 +73,6 @@ void BRepTools_History::Remove(const TopoDS_Shape& theRemoved)
   if (myShapeToModified.UnBind(theRemoved))
   {
   }
-
-  myRemoved.Add(theRemoved);
 }
 
 //==============================================================================
@@ -227,13 +195,11 @@ void BRepTools_History::Merge(const BRepTools_History& theHistory23)
           {
             if (theHistory23.myShapeToGenerated.IsBound(aS2))
             {
-              add(aAdditions[0], theHistory23.myShapeToGenerated(aS2));
               aMAndGPropagated.Add(aS2);
             }
 
             if (theHistory23.myShapeToModified.IsBound(aS2))
             {
-              add(aAdditions[aI], theHistory23.myShapeToModified(aS2));
               aMAndGPropagated.Add(aS2);
 
               aL12.Remove(aSIt2);
@@ -245,7 +211,6 @@ void BRepTools_History::Merge(const BRepTools_History& theHistory23)
           }
         }
 
-        add(aL12, aAdditions[aI]);
         if (aI != 0 && !aAdditions[0].IsEmpty())
         {
           const TopoDS_Shape& aS1 = aMIt1.Key();
@@ -254,8 +219,6 @@ void BRepTools_History::Merge(const BRepTools_History& theHistory23)
           {
             aGAndM = aS1ToGAndM[0]->Bound(aS1, TopTools_ListOfShape());
           }
-
-          add(*aGAndM, aAdditions[0]);
         }
       }
     }
