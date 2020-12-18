@@ -1,3 +1,3 @@
-#include <Standard_Transient.hxx>
+#include <Standard.hxx>
 
-auto a = new Standard_Transient();
+auto a = Standard::Allocate();

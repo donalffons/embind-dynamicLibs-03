@@ -8,10 +8,10 @@ class Standard
 public:
   void* operator new (size_t theSize)
   {
-    return Standard::Allocate (theSize);
+    return Standard::Allocate ();
   }
 
-  static void* Allocate (const size_t aSize);
+  static void* Allocate ();
 };
 
 #endif // _Standard_HeaderFile

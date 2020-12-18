@@ -6,7 +6,7 @@
 class Standard_MMgrRaw
 {
 public:
-  virtual void* Allocate(const size_t aSize){
+  virtual void* Allocate(){
     return new int;
   }
   
