@@ -18,48 +18,10 @@
 #include <cstddef>
 #include <ctime>
 
-// VC9 does not have stdint.h
-#if(defined(_MSC_VER) && (_MSC_VER < 1600))
-  // old MSVC - hasn't stdint header
-  typedef unsigned __int8   uint8_t;
-  typedef unsigned __int16  uint16_t;
-  typedef unsigned __int32  uint32_t;
-  typedef unsigned __int64  uint64_t;
+#include <stdint.h>
 
-  typedef signed __int8   int8_t;
-  typedef signed __int16  int16_t;
-  typedef signed __int32  int32_t;
-  typedef signed __int64  int64_t;
-#else
-  #include <stdint.h>
-#endif
-
-#if(defined(_MSC_VER) && (_MSC_VER < 1800))
-  // only Visual Studio 2013 (vc12) provides <cinttypes> header
-  // we do not defined all macros here - only used by OCCT framework
-  #define PRId64 "I64d"
-  #define PRIu64 "I64u"
-  #define SCNd64 "I64d"
-  #define SCNu64 "I64u"
-  #ifdef _WIN64
-    #define PRIdPTR "I64d"
-    #define PRIuPTR "I64u"
-    #define SCNdPTR "I64d"
-    #define SCNuPTR "I64u"
-  #else
-    #define PRIdPTR "d"
-    #define PRIuPTR "u"
-    #define SCNdPTR "d"
-    #define SCNuPTR "u"
-  #endif
-#else
-  // should be just <cinttypes> since C++11
-  // however we use this code for compatibility with old C99 compilers
-  #ifndef __STDC_FORMAT_MACROS
     #define __STDC_FORMAT_MACROS
-  #endif
   #include <inttypes.h>
-#endif
 
 #define Standard_False false
 #define Standard_True  true
@@ -79,16 +41,10 @@ typedef std::time_t   Standard_Time;
 // Unicode primitives, char16_t, char32_t
 typedef char          Standard_Utf8Char;     //!< signed   UTF-8 char
 typedef unsigned char Standard_Utf8UChar;    //!< unsigned UTF-8 char
-#if ((defined(__GNUC__) && !defined(__clang__) && ((__GNUC__ == 4 && __GNUC_MINOR__ <= 3) || __GNUC__ < 4)) || (defined(_MSC_VER) && (_MSC_VER < 1600)))
-// compatibility with old GCC and MSVC compilers
-typedef uint16_t      Standard_ExtCharacter;
-typedef uint16_t      Standard_Utf16Char;
-typedef uint32_t      Standard_Utf32Char;
-#else
+
 typedef char16_t      Standard_ExtCharacter;
 typedef char16_t      Standard_Utf16Char;    //!< UTF-16 char (always unsigned)
 typedef char32_t      Standard_Utf32Char;    //!< UTF-32 char (always unsigned)
-#endif
 typedef wchar_t       Standard_WideChar;     //!< wide char (unsigned UTF-16 on Windows platform and signed UTF-32 on Linux)
 
 //
