@@ -2,12 +2,18 @@
 #define _Standard_Transient_HeaderFile
 
 #include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
 
 class Standard_Transient
 {
 public:
-  DEFINE_STANDARD_ALLOC
+  void* operator new (size_t theSize)
+  {
+    return Standard::Allocate (theSize);
+  }
+  void  operator delete (void* theAddress)
+  {
+    Standard::Free (theAddress);
+  }
 };
 
 

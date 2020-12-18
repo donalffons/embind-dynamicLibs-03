@@ -1,30 +1,8 @@
-// Created on: 1991-09-05
-// Created by: J.P. TIRAUlt
-// Copyright (c) 1991-1999 Matra Datavision
-// Copyright (c) 1999-2014 OPEN CASCADE SAS
-//
-// This file is part of Open CASCADE Technology software library.
-//
-// This library is free software; you can redistribute it and/or modify it under
-// the terms of the GNU Lesser General Public License version 2.1 as published
-// by the Free Software Foundation, with special exception defined in the file
-// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
-// distribution for complete text of the license and disclaimer of any warranty.
-//
-// Alternatively, this file may be used under the terms of Open CASCADE
-// commercial license or contractual agreement.
-
 #ifndef _Standard_HeaderFile
 #define _Standard_HeaderFile
 
-#include <Standard_DefineAlloc.hxx>
 #include <Standard_Address.hxx>
 #include <Standard_Size.hxx>
-#include <Standard_Integer.hxx>
-
-class Standard_ErrorHandler;
-class Standard_Persistent;
-class Standard_Transient;
 
 //! The package Standard provides global memory allocator and other basic
 //! services used by other OCCT components.
@@ -32,8 +10,14 @@ class Standard_Transient;
 class Standard 
 {
 public:
-
-  DEFINE_STANDARD_ALLOC
+  void* operator new (size_t theSize)
+  {
+    return Standard::Allocate (theSize);
+  }
+  void  operator delete (void* theAddress)
+  {
+    Standard::Free (theAddress);
+  }
 
   
   //! Allocates memory blocks
@@ -43,19 +27,6 @@ public:
   //! Deallocates memory blocks
   //! @param thePtr - previously allocated memory block to be freed
   Standard_EXPORT static void Free (const Standard_Address thePtr);
-  
-  //! Template version of function Free(), nullifies the argument pointer
-  //! @param thePtr - previously allocated memory block to be freed
-  template <typename T>
-  static inline void Free (T*& thePtr) 
-  { 
-    Free ((void*)thePtr);
-    thePtr = 0;
-  }
 };
-
-// include definition of handle to make it always visible
-// (put at the and of the file due to cyclic dependency between headers)
-#include <Standard_Transient.hxx>
 
 #endif // _Standard_HeaderFile
