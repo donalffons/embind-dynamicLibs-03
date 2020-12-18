@@ -17,7 +17,6 @@ emcc \
   -s ASSERTIONS=1 \
   ./Standard.cxx \
   ./Standard_MMgrRaw.cxx \
-  ./NCollection_BaseAllocator.cxx \
   -o ./build/library1.wasm
 
 emcc \
