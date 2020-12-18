@@ -70,9 +70,6 @@ void BRepTools_History::AddGenerated(
     aGenerations = myShapeToGenerated.Bound(theInitial, TopTools_ListOfShape());
   }
 
-  Standard_ASSERT_VOID(!aGenerations->Contains(theGenerated),
-    "Error: a duplicated generation of a shape.");
-
   aGenerations->Append(theGenerated);
 }
 
@@ -96,9 +93,6 @@ void BRepTools_History::AddModified(
       myShapeToModified.Bound(theInitial, TopTools_ListOfShape());
   }
 
-  Standard_ASSERT_VOID(!aModifications->Contains(theModified),
-    "Error: a duplicated modification of a shape.");
-
   aModifications->Append(theModified);
 }
 
@@ -109,11 +103,8 @@ void BRepTools_History::AddModified(
 void BRepTools_History::Remove(const TopoDS_Shape& theRemoved)
 {
   // Apply the limitations.
-  Standard_ASSERT_RETURN(IsSupportedType(theRemoved), myMsgUnsupportedType,);
-
   if (myShapeToModified.UnBind(theRemoved))
   {
-    Standard_ASSERT_INVOKE_(, myMsgModifiedAndRemoved);
   }
 
   myRemoved.Add(theRemoved);
@@ -160,10 +151,6 @@ void BRepTools_History::ReplaceModified(
 const TopTools_ListOfShape& BRepTools_History::Generated(
   const TopoDS_Shape& theInitial) const
 {
-  // Apply the limitations.
-  Standard_ASSERT_RETURN(theInitial.IsNull() || IsSupportedType(theInitial),
-    myMsgUnsupportedType, emptyList());
-
   //
   const TopTools_ListOfShape* aGenerations =
     myShapeToGenerated.Seek(theInitial);
@@ -177,10 +164,6 @@ const TopTools_ListOfShape& BRepTools_History::Generated(
 const TopTools_ListOfShape& BRepTools_History::Modified(
   const TopoDS_Shape& theInitial) const
 {
-  // Apply the limitations.
-  Standard_ASSERT_RETURN(IsSupportedType(theInitial),
-    myMsgUnsupportedType, emptyList());
-
   //
   const TopTools_ListOfShape* aModifications =
     myShapeToModified.Seek(theInitial);
@@ -194,10 +177,6 @@ const TopTools_ListOfShape& BRepTools_History::Modified(
 Standard_Boolean BRepTools_History::IsRemoved(
   const TopoDS_Shape& theInitial) const
 {
-  // Apply the limitations.
-  Standard_ASSERT_RETURN(IsSupportedType(theInitial),
-    myMsgUnsupportedType, Standard_False);
-
   //
   return myRemoved.Contains(theInitial);
 }
@@ -346,13 +325,9 @@ void BRepTools_History::Merge(const BRepTools_History& theHistory23)
 Standard_Boolean BRepTools_History::prepareGenerated(
   const TopoDS_Shape& theInitial, const TopoDS_Shape& theGenerated)
 {
-  Standard_ASSERT_RETURN(theInitial.IsNull() ||
-    IsSupportedType(theInitial), myMsgUnsupportedType, Standard_False);
-
   if (myShapeToModified.IsBound(theInitial) &&
     myShapeToModified(theInitial).Remove(theGenerated))
   {
-    Standard_ASSERT_INVOKE_(, myMsgGeneratedAndModified);
   }
 
   return Standard_True;
@@ -365,18 +340,13 @@ Standard_Boolean BRepTools_History::prepareGenerated(
 Standard_Boolean BRepTools_History::prepareModified(
   const TopoDS_Shape& theInitial, const TopoDS_Shape& theModified)
 {
-  Standard_ASSERT_RETURN(IsSupportedType(theInitial),
-    myMsgUnsupportedType, Standard_False);
-
   if (myRemoved.Remove(theInitial))
   {
-    Standard_ASSERT_INVOKE_(, myMsgModifiedAndRemoved);
   }
 
   if (myShapeToGenerated.IsBound(theInitial) &&
     myShapeToGenerated(theInitial).Remove(theModified))
   {
-    Standard_ASSERT_INVOKE_(, myMsgGeneratedAndModified);
   }
 
   return Standard_True;

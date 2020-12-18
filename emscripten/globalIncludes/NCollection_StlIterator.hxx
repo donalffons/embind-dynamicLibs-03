@@ -16,7 +16,6 @@
 #ifndef NCollection_StlIterator_HeaderFile
 #define NCollection_StlIterator_HeaderFile
 
-#include <Standard_Assert.hxx>
 #include <iterator>
 
 //! Helper class that allows to use NCollection iterators as STL iterators.
@@ -129,8 +128,6 @@ public: //! @name methods related to bidirectional STL iterator
   //! Prefix decrement
   NCollection_StlIterator& operator--()
   {
-    Standard_STATIC_ASSERT((opencascade::std::is_same<std::bidirectional_iterator_tag,Category>::value ||
-                            opencascade::std::is_same<std::random_access_iterator_tag,Category>::value));
     myIterator.Previous();
     return *this;
   }
@@ -148,7 +145,6 @@ public: //! @name methods related to random access STL iterator
   //! Move forward
   NCollection_StlIterator& operator+= (typename NCollection_StlIterator::difference_type theOffset)
   {
-    Standard_STATIC_ASSERT((opencascade::std::is_same<std::random_access_iterator_tag,Category>::value));
     myIterator.Offset (theOffset);
     return *this;
   }
@@ -176,7 +172,6 @@ public: //! @name methods related to random access STL iterator
   //! Difference
   typename NCollection_StlIterator::difference_type operator- (const NCollection_StlIterator& theOther) const
   {
-    Standard_STATIC_ASSERT((opencascade::std::is_same<std::random_access_iterator_tag,Category>::value));
     return myIterator.Differ (theOther.myIterator);
   }
 
