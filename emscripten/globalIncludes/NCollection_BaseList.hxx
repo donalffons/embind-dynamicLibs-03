@@ -3,12 +3,6 @@
 
 #include <NCollection_BaseAllocator.hxx>
 
-class NCollection_BaseList
-{
-public:
-  NCollection_BaseList () {
-    auto asd = NCollection_BaseAllocator::CommonBaseAllocator();
-  }
-};
+auto a = NCollection_BaseAllocator::CommonBaseAllocator();
 
 #endif
