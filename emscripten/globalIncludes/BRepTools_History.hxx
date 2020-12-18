@@ -2,7 +2,8 @@
 #define _BRepTools_History_HeaderFile
 
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-class BRepTools_History: public Standard_Transient
+
+class BRepTools_History
 {
 public:
   BRepTools_History() {}
