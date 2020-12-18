@@ -1,11 +1,6 @@
 #include <Standard_MMgrRaw.hxx>
 #include <stdlib.h>
 
-//=======================================================================
-//function : Allocate
-//purpose  : 
-//=======================================================================
-
 Standard_Address Standard_MMgrRaw::Allocate(const Standard_Size aSize)
 {
   // the size is rounded up to 4 since some OCC classes
@@ -18,11 +13,6 @@ Standard_Address Standard_MMgrRaw::Allocate(const Standard_Size aSize)
     return nullptr;
   return aPtr;
 }
-
-//=======================================================================
-//function : Free
-//purpose  : 
-//=======================================================================
 
 void Standard_MMgrRaw::Free(Standard_Address theStorage)
 {

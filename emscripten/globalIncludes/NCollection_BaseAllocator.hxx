@@ -21,6 +21,4 @@ class NCollection_BaseAllocator : public Standard_Transient
   NCollection_BaseAllocator(const NCollection_BaseAllocator&);
 };
 
-DEFINE_STANDARD_HANDLE(NCollection_BaseAllocator,Standard_Transient)
-
 #endif
