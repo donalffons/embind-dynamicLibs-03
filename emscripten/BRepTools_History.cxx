@@ -1,3 +1,3 @@
-#include <BRepTools_History.hxx>
+#include <NCollection_List.hxx>
 
-const TopTools_ListOfShape BRepTools_History::myEmptyList;
+const NCollection_List<int> asd;
