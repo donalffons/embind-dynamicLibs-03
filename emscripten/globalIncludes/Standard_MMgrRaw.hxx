@@ -27,10 +27,6 @@
 class Standard_MMgrRaw
 {
  public:
-  //! Constructor; if aClear is True, the memory will be nullified
-  //! upon allocation.
-  Standard_EXPORT Standard_MMgrRaw(const Standard_Boolean aClear=Standard_False);
-
   //! Allocate aSize bytes 
   Standard_EXPORT virtual Standard_Address Allocate(const Standard_Size aSize);
   
