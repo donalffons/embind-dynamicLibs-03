@@ -6,12 +6,11 @@
 class Standard_MMgrRaw
 {
 public:
-  virtual void* Allocate(const size_t aSize);
+  virtual void* Allocate(const size_t aSize){
+    return nullptr;
+  }
   
-  virtual void Free (void* thePtr);
-
-protected:
-  bool myClear;
+  virtual void Free (void* thePtr){}
 };
 
 #endif
