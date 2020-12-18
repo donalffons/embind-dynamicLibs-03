@@ -1,3 +1,3 @@
-#include <NCollection_List.hxx>
+#include <NCollection_BaseList.hxx>
 
-const NCollection_List<int> asd;
+const NCollection_BaseList asd;

@@ -5,7 +5,7 @@
 
 class NCollection_BaseList
 {
-protected:
+public:
   NCollection_BaseList () {
     auto asd = NCollection_BaseAllocator::CommonBaseAllocator();
   }
