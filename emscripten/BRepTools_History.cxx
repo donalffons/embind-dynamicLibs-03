@@ -1,3 +1,3 @@
-#include <NCollection_BaseAllocator.hxx>
+#include <Standard_Transient.hxx>
 
-auto a = new NCollection_BaseAllocator();
+auto a = new Standard_Transient();
