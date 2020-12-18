@@ -7,8 +7,7 @@ class handle
 public:
   handle () {}
 
-  handle (const T *thePtr) 
-  {
+  handle (const T *thePtr) {
   }
 };
 
