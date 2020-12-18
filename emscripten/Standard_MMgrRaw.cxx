@@ -1,20 +1,20 @@
 #include <Standard_MMgrRaw.hxx>
 #include <stdlib.h>
 
-Standard_Address Standard_MMgrRaw::Allocate(const Standard_Size aSize)
+void* Standard_MMgrRaw::Allocate(const size_t aSize)
 {
   // the size is rounded up to 4 since some OCC classes
   // (e.g. TCollection_AsciiString) assume memory to be double word-aligned
-  const Standard_Size aRoundSize = (aSize + 3) & ~0x3;
+  const size_t aRoundSize = (aSize + 3) & ~0x3;
   // we use ?: operator instead of if() since it is faster :-)
-  Standard_Address aPtr = ( myClear ? calloc(aRoundSize, sizeof(char)) :
+  void* aPtr = ( myClear ? calloc(aRoundSize, sizeof(char)) :
                                       malloc(aRoundSize) );
   if ( ! aPtr )
     return nullptr;
   return aPtr;
 }
 
-void Standard_MMgrRaw::Free(Standard_Address theStorage)
+void Standard_MMgrRaw::Free(void* theStorage)
 {
   free(theStorage);
 }

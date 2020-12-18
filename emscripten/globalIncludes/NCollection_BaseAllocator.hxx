@@ -7,8 +7,7 @@
 class NCollection_BaseAllocator : public Standard_Transient
 {
  public:
-  Standard_EXPORT static const Handle(NCollection_BaseAllocator)&
-    CommonBaseAllocator(void);
+  static const Handle(NCollection_BaseAllocator)& CommonBaseAllocator(void);
 };
 
 #endif

@@ -12,21 +12,21 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifndef _Standard_Address_HeaderFile
-#define _Standard_Address_HeaderFile
+#ifndef _void*_HeaderFile
+#define _void*_HeaderFile
 
-#include <Standard_Integer.hxx>
+#include <int.hxx>
 
 //! Returns a hash code of the given memory pointer
 //! @param thePointer the memory pointer which hash code it to be computed
 //! @param theUpperBound the upper bound of the range a resulting hash code must be within
 //! @return a value of a computed hash code, in range [1, UpperBound]
-inline Standard_Integer HashCode (const void* const thePointer, const Standard_Integer theUpperBound)
+inline int HashCode (const void* const thePointer, const int theUpperBound)
 {
   union
   {
     const void*      L;
-    Standard_Integer I[2];
+    int I[2];
   } U;
 
   U.I[0] = 0;
@@ -37,11 +37,11 @@ inline Standard_Integer HashCode (const void* const thePointer, const Standard_I
 }
 
 //============================================================================
-// IsEqual : Returns Standard_True if two CString have the same value
+// IsEqual : Returns true if two CString have the same value
 //============================================================================
 
-inline Standard_Boolean IsEqual(const Standard_Address One
-			       ,const Standard_Address Two)
+inline bool IsEqual(const void* One
+			       ,const void* Two)
 { return One == Two; }
 
 #endif

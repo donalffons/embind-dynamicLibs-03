@@ -1,8 +1,7 @@
 #ifndef _Standard_HeaderFile
 #define _Standard_HeaderFile
 
-#include <Standard_Address.hxx>
-#include <Standard_Size.hxx>
+#include <cstddef>
 
 //! The package Standard provides global memory allocator and other basic
 //! services used by other OCCT components.
@@ -22,11 +21,11 @@ public:
   
   //! Allocates memory blocks
   //! aSize - bytes to  allocate
-  Standard_EXPORT static Standard_Address Allocate (const Standard_Size aSize);
+  static void* Allocate (const size_t aSize);
   
   //! Deallocates memory blocks
   //! @param thePtr - previously allocated memory block to be freed
-  Standard_EXPORT static void Free (const Standard_Address thePtr);
+  static void Free (void* thePtr);
 };
 
 #endif // _Standard_HeaderFile

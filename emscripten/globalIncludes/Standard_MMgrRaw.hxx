@@ -16,25 +16,19 @@
 #ifndef _Standard_MMgrRaw_HeaderFile
 #define _Standard_MMgrRaw_HeaderFile
 
-#include <Standard_TypeDef.hxx>
-
-/**
-* Implementation of raw OCC memory manager which uses standard C
-* functions: malloc (or calloc), free and realloc 
-* without any optimization
-*/
+#include <cstddef>
 
 class Standard_MMgrRaw
 {
  public:
   //! Allocate aSize bytes 
-  Standard_EXPORT virtual Standard_Address Allocate(const Standard_Size aSize);
+  virtual void* Allocate(const size_t aSize);
   
   //! Free allocated memory. The pointer is nullified.
-  Standard_EXPORT virtual void Free (Standard_Address thePtr);
+  virtual void Free (void* thePtr);
 
  protected:
-  Standard_Boolean myClear; //! Option to nullify allocated memory
+  bool myClear; //! Option to nullify allocated memory
 };
 
 #endif

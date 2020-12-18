@@ -12,8 +12,8 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifndef _Standard_Integer_HeaderFile
-#define _Standard_Integer_HeaderFile
+#ifndef _int_HeaderFile
+#define _int_HeaderFile
 
 #include <Standard_Std.hxx>
 #include <Standard_TypeDef.hxx>
@@ -22,26 +22,26 @@
 // ------------------------------------------------------------------
 // Square : Returns the square of an integer
 // ------------------------------------------------------------------
-inline Standard_Integer Square(const Standard_Integer Value)
+inline int Square(const int Value)
 { return Value * Value; }
 
 // ------------------------------------------------------------------
 // IntegerFirst : Returns the minimum value of an integer
 // ------------------------------------------------------------------
-inline Standard_Integer  IntegerFirst()
+inline int  IntegerFirst()
 { return INT_MIN; }
 
 // ------------------------------------------------------------------
 // IntegerLast : Returns the maximum value of an integer
 // ------------------------------------------------------------------
-inline Standard_Integer  IntegerLast()
+inline int  IntegerLast()
 { return INT_MAX; }
 
 // ------------------------------------------------------------------
 // IntegerSize : Returns the size in digits of an integer
 // ------------------------------------------------------------------
-inline Standard_Integer  IntegerSize()
-{ return BITS(Standard_Integer); }
+inline int  IntegerSize()
+{ return BITS(int); }
 
 
 //! Computes a hash code for the given value of some integer type, in range [1, theUpperBound]
@@ -51,20 +51,20 @@ inline Standard_Integer  IntegerSize()
 //! @param theUpperBound the upper bound of the range a computing hash code must be within
 //! @return a computed hash code, in range [1, theUpperBound]
 template <typename TheInteger>
-typename opencascade::std::enable_if<opencascade::is_integer<TheInteger>::value, Standard_Integer>::type
+typename opencascade::std::enable_if<opencascade::is_integer<TheInteger>::value, int>::type
 IntegerHashCode (const TheInteger                                                theValue,
                  const typename opencascade::disable_deduction<TheInteger>::type theMask,
-                 const Standard_Integer                                          theUpperBound)
+                 const int                                          theUpperBound)
 {
-  return static_cast<Standard_Integer> ((theValue & theMask) % theUpperBound + 1);
+  return static_cast<int> ((theValue & theMask) % theUpperBound + 1);
 }
 
-//! Computes a hash code for the given value of the Standard_Integer type, in range [1, theUpperBound]
-//! @param theValue the value of the Standard_Integer type which hash code is to be computed
+//! Computes a hash code for the given value of the int type, in range [1, theUpperBound]
+//! @param theValue the value of the int type which hash code is to be computed
 //! @param theUpperBound the upper bound of the range a computing hash code must be within
 //! @return a computed hash code, in range [1, theUpperBound]
-inline Standard_Integer HashCode (const Standard_Integer theValue,
-                                  const Standard_Integer theUpperBound)
+inline int HashCode (const int theValue,
+                                  const int theUpperBound)
 {
   // return (Abs (theMe) % theUpper) + 1;
   return IntegerHashCode(theValue, IntegerLast(), theUpperBound);

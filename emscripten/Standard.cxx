@@ -25,12 +25,12 @@ Standard_MMgrRaw* Standard_MMgrFactory::GetMMgr()
   return aFactory.myFMMgr;
 }
 
-Standard_Address Standard::Allocate(const Standard_Size size)
+void* Standard::Allocate(const size_t size)
 {
   return Standard_MMgrFactory::GetMMgr()->Allocate(size);
 }
 
-void Standard::Free (Standard_Address theStorage)
+void Standard::Free (void* theStorage)
 {
   Standard_MMgrFactory::GetMMgr()->Free(theStorage);
 }

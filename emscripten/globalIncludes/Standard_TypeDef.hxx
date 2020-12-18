@@ -23,32 +23,10 @@
     #define __STDC_FORMAT_MACROS
   #include <inttypes.h>
 
-#define Standard_False false
-#define Standard_True  true
 
 #include <Standard_Macro.hxx>
 
-typedef int           Standard_Integer;
-typedef double        Standard_Real;
-typedef bool          Standard_Boolean;
-typedef float         Standard_ShortReal;
-typedef char          Standard_Character;
-typedef unsigned char Standard_Byte;
-typedef void*         Standard_Address;
-typedef size_t        Standard_Size;
-typedef std::time_t   Standard_Time;
-
 // Unicode primitives, char16_t, char32_t
-typedef char          Standard_Utf8Char;     //!< signed   UTF-8 char
-typedef unsigned char Standard_Utf8UChar;    //!< unsigned UTF-8 char
 
-typedef char16_t      Standard_ExtCharacter;
-typedef char16_t      Standard_Utf16Char;    //!< UTF-16 char (always unsigned)
-typedef char32_t      Standard_Utf32Char;    //!< UTF-32 char (always unsigned)
-typedef wchar_t       Standard_WideChar;     //!< wide char (unsigned UTF-16 on Windows platform and signed UTF-32 on Linux)
-
-//
-typedef const Standard_Character*    Standard_CString;
-typedef const Standard_ExtCharacter* Standard_ExtString;
 
 #endif // _Standard_TypeDef_HeaderFile
