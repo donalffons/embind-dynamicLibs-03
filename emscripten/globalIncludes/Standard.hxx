@@ -3,10 +3,6 @@
 
 #include <cstddef>
 
-class Standard 
-{
-public:
-  static void* Allocate ();
-};
+void* Standard_Allocate();
 
 #endif // _Standard_HeaderFile
