@@ -11,17 +11,15 @@ Problem:
 Current build configuration yields:
 
 ```
-main.js:1529 Uncaught (in promise) RuntimeError: abort(Assertion failed: old table entries must remain the same) at Error
-    at jsStackTrace (https://embind-dynamic-libs-02-git-master.donalffons.vercel.app/emscripten/build/main.js:1782:19)
-    at stackTrace (https://embind-dynamic-libs-02-git-master.donalffons.vercel.app/emscripten/build/main.js:2297:16)
-    at abort (https://embind-dynamic-libs-02-git-master.donalffons.vercel.app/emscripten/build/main.js:1523:44)
-    at assert (https://embind-dynamic-libs-02-git-master.donalffons.vercel.app/emscripten/build/main.js:701:5)
-    at postInstantiation (https://embind-dynamic-libs-02-git-master.donalffons.vercel.app/emscripten/build/main.js:2059:13)
-    at https://embind-dynamic-libs-02-git-master.donalffons.vercel.app/emscripten/build/main.js:2084:20
-    at async Promise.all (index 1)
-    at abort (https://embind-dynamic-libs-02-git-master.donalffons.vercel.app/emscripten/build/main.js:1529:11)
-    at assert (https://embind-dynamic-libs-02-git-master.donalffons.vercel.app/emscripten/build/main.js:701:5)
-    at postInstantiation (https://embind-dynamic-libs-02-git-master.donalffons.vercel.app/emscripten/build/main.js:2059:13)
-    at https://embind-dynamic-libs-02-git-master.donalffons.vercel.app/emscripten/build/main.js:2084:20
-    at async Promise.all (index 1)
+Uncaught (in promise) RuntimeError: function signature mismatch
+    at _ZN8Standard8AllocateEm (<anonymous>:wasm-function[23]:0x1379)
+    at obj.<computed> (https://embind-dynamic-libs-03-git-master.donalffons.vercel.app/emscripten/build/main.js:2037:31)
+    at _ZN18Standard_TransientnwEm (<anonymous>:wasm-function[4]:0x200)
+    at <anonymous>:wasm-function[3]:0x1c8
+    at <anonymous>:wasm-function[5]:0x219
+    at __post_instantiate (<anonymous>:wasm-function[1]:0x1b6)
+    at callRuntimeCallbacks (https://embind-dynamic-libs-03-git-master.donalffons.vercel.app/emscripten/build/main.js:1747:11)
+    at initRuntime (https://embind-dynamic-libs-03-git-master.donalffons.vercel.app/emscripten/build/main.js:1361:3)
+    at doRun (https://embind-dynamic-libs-03-git-master.donalffons.vercel.app/emscripten/build/main.js:52650:5)
+    at run (https://embind-dynamic-libs-03-git-master.donalffons.vercel.app/emscripten/build/main.js:52672:5)
 ```
