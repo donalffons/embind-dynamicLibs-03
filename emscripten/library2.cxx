@@ -1,3 +1,6 @@
 #include <Standard.hxx>
 
-void* a = Standard_Allocate();
+void* a = (new Standard_MMgrRaw())->Allocate();
+
+// Previous Version (This still results in the same error):
+// void* a = Standard_Allocate();

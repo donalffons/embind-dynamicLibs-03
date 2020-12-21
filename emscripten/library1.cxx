@@ -1,14 +1,6 @@
 #include <Standard.hxx>
 #include <iostream>
 
-class Standard_MMgrRaw
-{
-public:
-  virtual void* Allocate() {
-    return new int;
-  }
-};
-
 void* Standard_Allocate()
 {
   std::cout << "1" << std::endl;
