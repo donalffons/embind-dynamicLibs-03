@@ -12,9 +12,9 @@ globalThis.setImmediate = () => {}
   o.FS.writeFile("/library1.wasm", library1);
   const library2 = new Int8Array(await (await fetch("/emscripten/build/library2.wasm")).arrayBuffer());
   o.FS.writeFile("/library2.wasm", library2);
-  o.callMain();
   o.ccall("loadLib1");
   o.ccall("loadLib2");
+  o.callMain();
   setTimeout(() => {
     postMessage("");
   }, 100);
