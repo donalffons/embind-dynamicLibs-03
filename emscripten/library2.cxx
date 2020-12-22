@@ -1,3 +1,3 @@
 #include <Standard.hxx>
 
-void* a = Standard_Allocate();
+int a = Standard_Allocate();

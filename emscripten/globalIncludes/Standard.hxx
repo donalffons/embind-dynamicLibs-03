@@ -3,6 +3,6 @@
 
 #include <cstddef>
 
-void* Standard_Allocate();
+int Standard_Allocate();
 
 #endif // _Standard_HeaderFile

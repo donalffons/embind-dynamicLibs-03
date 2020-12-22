@@ -9,7 +9,7 @@ public:
   }
 };
 
-void* Standard_Allocate()
+int Standard_Allocate()
 {
   std::cout << "1" << std::endl;
   auto a = new Standard_MMgrRaw ();

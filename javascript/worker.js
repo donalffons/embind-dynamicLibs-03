@@ -15,6 +15,7 @@ globalThis.setImmediate = () => {}
   o.ccall("loadLib1");
   o.ccall("loadLib2");
   o.callMain();
+  o.Standard_Allocate();
   setTimeout(() => {
     postMessage("");
   }, 100);
