@@ -3,7 +3,7 @@
   </head>
   <body>
     <script>
-      var myWorker = new Worker("./worker.js", { type: "module" });
+      var myWorker = new Worker("/javascript/worker.js", { type: "module" });
       myWorker.onmessage = message => {
         window.location.reload();
       };
